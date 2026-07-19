@@ -1,9 +1,9 @@
 /**
  * Vercel serverless function: POST /api/chat
  * Server-side Gemini proxy for the website chat assistants.
- * The API key stays on the server — it is never shipped to the browser.
+ * Uses the plain REST API via fetch — no SDK import, nothing to break.
+ * The API key stays on the server; it is never shipped to the browser.
  */
-import { GoogleGenAI } from '@google/genai';
 import { CHAT_MODEL, SYSTEM_INSTRUCTION, rateLimited, clip, BUSINESS_PHONE_DISPLAY } from './_shared';
 
 export default async function handler(req: any, res: any) {
@@ -31,29 +31,43 @@ export default async function handler(req: any, res: any) {
   }
 
   const raw = Array.isArray(req.body?.messages) ? req.body.messages : [];
-  const messages = raw.slice(-30).map((m: any) => ({
+  const contents = raw.slice(-30).map((m: any) => ({
     role: m?.role === 'user' ? 'user' : 'model',
     parts: [{ text: clip(m?.text, 2000) }],
   }));
-  if (!messages.length || messages[messages.length - 1].role !== 'user') {
+  if (!contents.length || contents[contents.length - 1].role !== 'user') {
     res.status(400).json({ error: 'bad-request' });
     return;
   }
 
   try {
-    const ai = new GoogleGenAI({ apiKey });
-    const response = await ai.models.generateContent({
-      model: CHAT_MODEL,
-      contents: messages,
-      config: {
-        systemInstruction: SYSTEM_INSTRUCTION,
-        temperature: 0.2,
-        maxOutputTokens: 400,
-      },
-    });
+    const upstream = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${CHAT_MODEL}:generateContent`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-goog-api-key': apiKey,
+        },
+        body: JSON.stringify({
+          contents,
+          systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
+          generationConfig: { temperature: 0.2, maxOutputTokens: 400 },
+        }),
+      }
+    );
+    const data: any = await upstream.json().catch(() => null);
     const text =
-      response.text ||
+      data?.candidates?.[0]?.content?.parts?.map((p: any) => p.text || '').join('') ||
       `I am sorry, I could not process that — please call our team on ${BUSINESS_PHONE_DISPLAY}.`;
+    if (!upstream.ok) {
+      console.error('[chat] Gemini REST error:', upstream.status, JSON.stringify(data)?.slice(0, 300));
+      res.status(502).json({
+        error: 'chat-upstream-error',
+        text: `I am having a technical issue right now — please call our team directly on ${BUSINESS_PHONE_DISPLAY}.`,
+      });
+      return;
+    }
     res.status(200).json({ text });
   } catch (err) {
     console.error('[chat] Gemini error:', err);
