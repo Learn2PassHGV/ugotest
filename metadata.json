@@ -1,0 +1,8 @@
+{
+  "name": "UGO Coaches Premium Frontend",
+  "description": "High-end logistics and transport branding prototype featuring Fluid Glass UI and Smart Quote logic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

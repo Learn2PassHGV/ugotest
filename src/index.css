@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-royal-navy: #0A1424;
+  --color-royal-navy-light: #15243B;
+  --color-alabaster: #F9F8F5;
+  --color-alabaster-dark: #EFECE5;
+  --color-brass: #B69251;
+  --color-brass-dark: #8E7036;
+  --color-british-green: #073523;
+  
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-alabaster);
+    color: var(--color-royal-navy);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  ::selection {
+    background-color: var(--color-brass);
+    color: #fff;
+  }
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-alabaster);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-royal-navy-light);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brass);
+}
+
+/* --- Global Luxury Motion Suite --- */
+@keyframes revealTextMask {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes buttonSheen {
+  0% {
+    transform: translate3d(-100%, 0, 0) skewX(-20deg);
+  }
+  100% {
+    transform: translate3d(250%, 0, 0) skewX(-20deg);
+  }
+}
+
+.reveal-text-mask {
+  animation: revealTextMask 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, clip-path;
+}
+
+.reveal-card-premium {
+  opacity: 0;
+  transform: translate3d(0, 35px, 0) scale(0.97);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-card-premium.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Premium Button Hover Sheen and Micro-elevation */
+.btn-premium-sheen {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.btn-premium-sheen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translate3d(-110%, 0, 0) skewX(-20deg);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.btn-premium-sheen:hover::after {
+  animation: buttonSheen 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.btn-premium-sheen:hover {
+  transform: translate3d(0, -3px, 0);
+  box-shadow: 0 10px 20px -5px rgba(182, 146, 81, 0.25);
+}
+
+/* --- Viewport-Driven Scroll Reveal System for Location Pages --- */
+:root {
+  --luxury-inertia: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base State: 100% hidden, dropped down in virtual space, and camera-blurred */
+.reveal-layer-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translate3d(0, 65px, 0) scale3d(0.98, 0.98, 1) !important;
+  filter: blur(8px) !important;
+  transition: opacity 1.1s ease-out, transform 1.1s var(--luxury-inertia), filter 1.1s var(--luxury-inertia), visibility 1.1s !important;
+  will-change: transform, opacity, filter !important;
+  backface-visibility: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* Active State: The exact millisecond the location block enters the screen */
+.reveal-layer-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1) !important;
+  filter: blur(0px) !important;
+}
+
+/* Mapping of section delays */
+.reveal-label-node,
+.reveal-header-node {
+  transition-delay: 0.0s !important;
+  line-height: 1.35 !important;
+}
+
+.reveal-desc-node {
+  transition-delay: 0.15s !important;
+}
+
+.reveal-grid-node,
+.reveal-card-node,
+.reveal-map-node {
+  transition-delay: 0.22s !important;
+}
+
+.reveal-hub-node:nth-child(1),
+.reveal-hub-1 {
+  transition-delay: 0.35s !important;
+}
+
+.reveal-hub-node:nth-child(2),
+.reveal-hub-2 {
+  transition-delay: 0.47s !important;
+}
+
+.reveal-hub-node:nth-child(3),
+.reveal-hub-3 {
+  transition-delay: 0.59s !important;
+}
+
+.reveal-hub-node:nth-child(4),
+.reveal-hub-4 {
+  transition-delay: 0.71s !important;
+}
+
+.reveal-btn-node {
+  transition-delay: 0.78s !important;
+}
+
+/* --- Isolated Top Hero Entrance Suite for Location Pages --- */
+:root {
+  --landing-inertia: cubic-bezier(0.16, 1, 0.3, 1);
+  --luxury-inertia: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes luxuryLandingReveal {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 45px, 0) scale3d(0.99, 0.99, 1);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes luxuryInitialLoad {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 45px, 0) scale3d(0.99, 0.99, 1);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    filter: blur(0px);
+  }
+}
+
+.hero-badge-load {
+  opacity: 0;
+  animation: luxuryLandingReveal 1s var(--landing-inertia) both !important;
+  animation-delay: 0.15s !important;
+  will-change: transform, opacity, filter !important;
+  backface-visibility: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.hero-title-load {
+  opacity: 0;
+  animation: luxuryLandingReveal 1.2s var(--landing-inertia) both !important;
+  animation-delay: 0.32s !important;
+  line-height: 1.3 !important;
+  will-change: transform, opacity, filter !important;
+  backface-visibility: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.hero-subtext-load {
+  opacity: 0;
+  animation: luxuryLandingReveal 1.1s var(--landing-inertia) both !important;
+  animation-delay: 0.48s !important;
+  will-change: transform, opacity, filter !important;
+  backface-visibility: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.hero-buttons-load {
+  opacity: 0;
+  animation: luxuryLandingReveal 1s var(--landing-inertia) both !important;
+  animation-delay: 0.62s !important;
+  will-change: transform, opacity, filter !important;
+  backface-visibility: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* --- Service Page Entrance Suite (Immediate On-Load Action) --- */
+.service-badge-load {
+  opacity: 0;
+  animation: luxuryInitialLoad 1s var(--luxury-inertia) both !important;
+  animation-delay: 0.15s !important;
+  will-change: transform, opacity, filter !important;
+  backface-visibility: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.service-title-load {
+  opacity: 0;
+  animation: luxuryInitialLoad 1.2s var(--luxury-inertia) both !important;
+  animation-delay: 0.32s !important;
+  line-height: 1.35 !important;
+  will-change: transform, opacity, filter !important;
+  backface-visibility: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.service-subtext-load {
+  opacity: 0;
+  animation: luxuryInitialLoad 1.1s var(--luxury-inertia) both !important;
+  animation-delay: 0.48s !important;
+  will-change: transform, opacity, filter !important;
+  backface-visibility: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.service-buttons-load {
+  opacity: 0;
+  animation: luxuryInitialLoad 1s var(--luxury-inertia) both !important;
+  animation-delay: 0.62s !important;
+  will-change: transform, opacity, filter !important;
+  backface-visibility: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* --- Service Lower Section Node Staggers --- */
+.reveal-sec-header {
+  transition-delay: 0.0s !important;
+  line-height: 1.35 !important;
+}
+
+.reveal-sec-desc {
+  transition-delay: 0.15s !important;
+}
+
+.reveal-sec-card {
+  transition-delay: 0.22s !important;
+}
+
+.reveal-sec-node-1 {
+  transition-delay: 0.35s !important;
+}
+
+.reveal-sec-node-2 {
+  transition-delay: 0.45s !important;
+}
+
+.reveal-sec-node-3 {
+  transition-delay: 0.55s !important;
+}
+
+.reveal-sec-node-4 {
+  transition-delay: 0.65s !important;
+}
+
+.reveal-sec-btn {
+  transition-delay: 0.75s !important;
+}
+
+
+
+/* --- Accessibility: honour reduced-motion preferences --- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-layer-hidden,
+  .hero-badge-load, .hero-title-load, .hero-subtext-load, .hero-buttons-load,
+  .service-badge-load, .service-title-load, .service-subtext-load, .service-buttons-load,
+  .reveal-text-mask, .reveal-card-premium {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    visibility: visible !important;
+    clip-path: none !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Screen-reader-only utility (canonical H1 in the hero) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
