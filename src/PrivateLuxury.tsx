@@ -222,7 +222,7 @@ export function PrivateLuxury({ onNavigateToHomeAndBook }: PrivateLuxuryProps) {
                       : "bg-amber-500 hover:bg-amber-600 text-slate-950 shadow-sm" 
                   )}
                 >
-                  Acquire Bespoke Price Quote
+                  Get My Bespoke Quote
                 </button>
               </div>
             ))}

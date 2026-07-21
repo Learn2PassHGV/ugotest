@@ -99,7 +99,7 @@ export function CorporateResponsibility({ onNavigateToHomeAndBook }: CorporateRe
           </h1>
 
           <p className="font-sans text-slate-350 font-light text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
-            Measurable carbon tracking, strict environmental compliance, and ethical social governance protocols engineered to satisfy modern multinational ESG procurement mandates.
+            Measurable carbon reporting, Euro 6 clean-air compliance and responsible governance — the evidence your ESG and procurement teams ask for, ready to hand.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -118,7 +118,7 @@ export function CorporateResponsibility({ onNavigateToHomeAndBook }: CorporateRe
               }}
               className="w-full sm:w-auto bg-white/5 hover:bg-white/15 text-white border border-white/10 font-sans text-xs uppercase tracking-[0.15em] font-medium py-4 px-8 rounded-xl transition-colors cursor-pointer"
             >
-              Examine ESG Parameters
+              See Our ESG Commitments
             </button>
           </div>
         </div>
@@ -272,7 +272,7 @@ export function CorporateResponsibility({ onNavigateToHomeAndBook }: CorporateRe
                       Labor &amp; Safety Governance
                     </td>
                     <td className="py-6 px-6 md:px-8 font-sans font-light">
-                      100% Enhanced DBS Personnel Screening Protocols
+                      100% Enhanced-DBS-Checked Drivers &amp; Staff
                     </td>
                     <td className="py-6 px-6 md:px-8 font-sans font-semibold text-amber-500">
                       Zero-risk vendor registration and approval for educational boards and corporate accounts.

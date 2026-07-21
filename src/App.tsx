@@ -3867,7 +3867,7 @@ function FleetShowroom() {
         {/* Section Footer */}
         <div className="mt-16 text-center max-w-3xl mx-auto">
           <p className="font-sans text-slate-600 text-xs md:text-sm italic font-light">
-            All assets are subject to daily detailing, routine structural safety vetting, and regular enhanced deep cleaning protocols by our family team.
+            Every vehicle is detailed daily, safety-inspected on a rolling schedule, and deep-cleaned regularly by our family team.
           </p>
         </div>
 
@@ -4834,7 +4834,9 @@ export default function App() {
       <SiteHeader onNavigate={(page) => setCurrentPage(page)} />
 
       <main>
-        <React.Suspense fallback={<div className="min-h-[70vh]" aria-busy="true" />}>
+        {/* Fallback taller than the viewport keeps the footer below the fold while a
+            route chunk loads, so the content swap causes zero visible layout shift (CLS). */}
+        <React.Suspense fallback={<div className="min-h-[120vh]" aria-busy="true" />}>
         {currentPage === 'home' && (
           <>
             <HeroAndQuoteArea />

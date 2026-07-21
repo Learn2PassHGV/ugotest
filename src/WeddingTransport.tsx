@@ -155,7 +155,7 @@ export function WeddingTransport({ onNavigateToHomeAndBook }: WeddingTransportPr
               onClick={() => handleActionClick("Wedding Transport")}
               className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-slate-950 font-sans text-xs uppercase tracking-[0.2em] font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.01] cursor-pointer"
             >
-              Initiate Wedding Consultation
+              Book a Wedding Consultation
             </button>
             <button
               onClick={() => {

@@ -57,7 +57,7 @@ export function AirportHubs({ onNavigateToHomeAndBook }: AirportHubsProps) {
   const capabilityCards = [
     {
       title: "Commercial Hub Master Class: Heathrow & Gatwick",
-      brief: "Continuous multi terminal executive coordination and seamless terminal drop off compliance protocols. Curated for extensive baggage allocations and custom meet and greet routes for international flights.",
+      brief: "Executive transfers across every London terminal, with generous luggage space, meet-and-greet options and drivers who know exactly where to drop off at each airport.",
       bgClass: "bg-[#050C1A] text-white border-white/5 shadow-2xl",
       btnClass: "bg-amber-500 hover:bg-amber-600 text-slate-950",
       ctaText: "Configure Terminal Transit",
