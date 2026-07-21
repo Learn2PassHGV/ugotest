@@ -15,6 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { TOWNS } from '../src/data/towns';
+import { POSTS } from '../src/data/posts';
 
 const SITE_URL = 'https://www.coaches.business';
 const DIST = path.join(process.cwd(), 'dist');
@@ -61,6 +62,12 @@ const ROUTES: RouteMeta[] = [
     title: `Coach Hire ${t.name} | Minibus Hire ${t.name} | UGO`,
     description: t.metaDescription,
     priority: 0.8,
+  })),
+  ...POSTS.map((p) => ({
+    path: `/blog/${p.slug}`,
+    title: `${p.title} | UGO`,
+    description: p.metaDescription,
+    priority: 0.6,
   })),
 ];
 
