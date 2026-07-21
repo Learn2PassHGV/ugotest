@@ -116,7 +116,7 @@ export function WeddingTransport({ onNavigateToHomeAndBook }: WeddingTransportPr
           <div className="service-badge-load inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6 select-none shadow-sm">
             <Sliders className="w-3.5 h-3.5 text-amber-500 animate-pulse" />
             <span className="font-mono text-[9px] md:text-10px font-extrabold uppercase tracking-[0.25em] text-amber-500">
-              WEDDING DAY GROUND LOGISTICS
+              WEDDING GUEST TRANSPORT
             </span>
           </div>
 
@@ -128,16 +128,16 @@ export function WeddingTransport({ onNavigateToHomeAndBook }: WeddingTransportPr
           </h1>
 
           <p className="service-subtext-load font-sans text-slate-350 font-light text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
-            Flawless, entirely unbranded guest and bridal party logistics tailored for historic country estates, luxury manor venues, and prestigious matrimonial milestones across London and the Home Counties.
+            Flawless, unbranded transport for your guests and bridal party — planned around historic estates, manor venues and celebrations across London and the Home Counties.
           </p>
 
           {/* VISUAL HARMONY PROTOCOL BLOCK */}
           <div className="service-subtext-load bg-slate-950 border border-white/10 text-white p-6 md:p-8 rounded-2xl max-w-3xl mx-auto my-8 shadow-2xl relative">
             <div className="font-mono text-[9px] font-extrabold tracking-[0.25em] text-amber-500 uppercase mb-2">
-              VISUAL HARMONY PROTOCOL
+              MADE FOR THE PHOTOGRAPHS
             </div>
             <p className="font-serif text-sm md:text-base leading-relaxed text-slate-200 italic font-light">
-              "UGO recognises that our vehicles form the backdrop of your most celebrated milestone. Our entire fleet operates completely unbranded, presenting a pristine canvas that integrates seamlessly into your wedding photography and arrival aesthetics."
+              "Your wedding photographs last forever — and our vehicles are often in them. That is why the fleet is completely unbranded and kept pristine: it looks right at the venue doors, and it looks right in the album."
             </p>
             {/* Accent gold underline rule */}
             <div className="w-24 h-0.5 bg-amber-500 mx-auto mt-5" />
