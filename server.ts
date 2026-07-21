@@ -80,7 +80,8 @@ async function startServer() {
         config: {
           systemInstruction: SYSTEM_INSTRUCTION,
           temperature: 0.2,
-          maxOutputTokens: 400,
+          maxOutputTokens: 1000,
+          thinkingConfig: { thinkingBudget: 0 },
         },
       });
       const text =
