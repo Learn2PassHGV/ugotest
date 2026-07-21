@@ -4,72 +4,296 @@
   "outputDirectory": "dist",
   "trailingSlash": false,
   "redirects": [
-    { "source": "/gallery", "destination": "/the-fleet", "permanent": true },
-    { "source": "/get-started", "destination": "/", "permanent": true },
-    { "source": "/how-quick-can-you-provide-us-with-a-coach-or-minibus", "destination": "/about", "permanent": true },
-    { "source": "/our-on-board-technology", "destination": "/the-fleet", "permanent": true },
-    { "source": "/sitemap", "destination": "/locations", "permanent": true },
-    { "source": "/ugo-coach-minibus-privacy-policy", "destination": "/privacy-policy", "permanent": true },
-    { "source": "/contact-ugo-coach-and-minibus-hire", "destination": "/contact", "permanent": true },
-    { "source": "/coach-and-minibus-hire-for-airport-transfers", "destination": "/locations/airport-hubs", "permanent": true },
-    { "source": "/ugo-booking-facility", "destination": "/", "permanent": true },
-    { "source": "/business-travel-page", "destination": "/corporate-accounts", "permanent": true },
-    { "source": "/celebration-events-weddings-party-tours", "destination": "/wedding-transport", "permanent": true },
-    { "source": "/events-minibus-and-coach-hire", "destination": "/strategic-events", "permanent": true },
-    { "source": "/evenings-out-coach-hire", "destination": "/private-coach-hire", "permanent": true },
-    { "source": "/private-hire-coach-minibus", "destination": "/private-coach-hire", "permanent": true },
-    { "source": "/school-trips-school-day-trips", "destination": "/our-services", "permanent": true },
-    { "source": "/coach-minibus-hire-sporting-events", "destination": "/strategic-events", "permanent": true },
-    { "source": "/stag-hen-party-minibus-and-coach-hire", "destination": "/private-coach-hire", "permanent": true },
-    { "source": "/uk-tour-minibus-and-coach-hire", "destination": "/private-coach-hire", "permanent": true },
-    { "source": "/weekend-and-day-trip-coach-and-minibus-hire", "destination": "/private-coach-hire", "permanent": true },
-    { "source": "/what-areas-of-the-country-do-you-cover", "destination": "/locations", "permanent": true },
-    { "source": "/what-services-do-ugo-provide", "destination": "/our-services", "permanent": true },
-    { "source": "/why-should-we-use-ugo-coach-minibus-hire", "destination": "/about", "permanent": true },
-    { "source": "/testimonials-ugo-caoch-minibus-hire", "destination": "/", "permanent": true },
-    { "source": "/terms-and-conditions-of-booking", "destination": "/terms", "permanent": true },
-    { "source": "/about-ugo-coach-and-minibus-hire-company", "destination": "/about", "permanent": true },
-    { "source": "/chauffer-hire-services", "destination": "/private-luxury", "permanent": true },
-    { "source": "/film-tv-location-services", "destination": "/film-tv-logistics", "permanent": true },
-    { "source": "/corporate-minibus-and-coach-hire", "destination": "/corporate-accounts", "permanent": true },
-    { "source": "/coach-hire-amersham-2", "destination": "/coach-hire-amersham", "permanent": true },
-    { "source": "/coach-hire-st-albans", "destination": "/locations/st-albans", "permanent": true },
-    { "source": "/coach-hire-watford", "destination": "/locations/watford", "permanent": true },
-    { "source": "/coach-hire-hemel-hempstead", "destination": "/locations/hemel-hempstead", "permanent": true },
-    { "source": "/coach-hire-luton", "destination": "/locations/luton", "permanent": true },
-    { "source": "/the-ugo-blog", "destination": "/blog", "permanent": true },
-    { "source": "/latest-news/:slug*", "destination": "/blog", "permanent": true },
-    { "source": "/uncategorized/:slug*", "destination": "/blog", "permanent": true },
-    { "source": "/category/:slug*", "destination": "/blog", "permanent": true },
-    { "source": "/tag/:slug*", "destination": "/blog", "permanent": true },
-    { "source": "/wp-content/:path*", "destination": "/", "permanent": true },
-    { "source": "/services/corporate-frameworks", "destination": "/corporate-accounts", "permanent": true },
-    { "source": "/services/:slug", "destination": "/:slug", "permanent": true },
-    { "source": "/company/about", "destination": "/about", "permanent": true },
-    { "source": "/company/csr", "destination": "/csr", "permanent": true },
-    { "source": "/luxury-minibus-hire", "destination": "/private-luxury", "permanent": true },
-    { "source": "/commercial-contracts", "destination": "/our-services", "permanent": true },
-    { "source": "/privacy", "destination": "/privacy-policy", "permanent": true }
+    {
+      "source": "/gallery",
+      "destination": "/the-fleet",
+      "permanent": true
+    },
+    {
+      "source": "/get-started",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/how-quick-can-you-provide-us-with-a-coach-or-minibus",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/our-on-board-technology",
+      "destination": "/the-fleet",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/ugo-coach-minibus-privacy-policy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/contact-ugo-coach-and-minibus-hire",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/coach-and-minibus-hire-for-airport-transfers",
+      "destination": "/locations/airport-hubs",
+      "permanent": true
+    },
+    {
+      "source": "/ugo-booking-facility",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/business-travel-page",
+      "destination": "/corporate-accounts",
+      "permanent": true
+    },
+    {
+      "source": "/celebration-events-weddings-party-tours",
+      "destination": "/wedding-transport",
+      "permanent": true
+    },
+    {
+      "source": "/events-minibus-and-coach-hire",
+      "destination": "/strategic-events",
+      "permanent": true
+    },
+    {
+      "source": "/evenings-out-coach-hire",
+      "destination": "/private-coach-hire",
+      "permanent": true
+    },
+    {
+      "source": "/private-hire-coach-minibus",
+      "destination": "/private-coach-hire",
+      "permanent": true
+    },
+    {
+      "source": "/school-trips-school-day-trips",
+      "destination": "/our-services",
+      "permanent": true
+    },
+    {
+      "source": "/coach-minibus-hire-sporting-events",
+      "destination": "/strategic-events",
+      "permanent": true
+    },
+    {
+      "source": "/stag-hen-party-minibus-and-coach-hire",
+      "destination": "/private-coach-hire",
+      "permanent": true
+    },
+    {
+      "source": "/uk-tour-minibus-and-coach-hire",
+      "destination": "/private-coach-hire",
+      "permanent": true
+    },
+    {
+      "source": "/weekend-and-day-trip-coach-and-minibus-hire",
+      "destination": "/private-coach-hire",
+      "permanent": true
+    },
+    {
+      "source": "/what-areas-of-the-country-do-you-cover",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/what-services-do-ugo-provide",
+      "destination": "/our-services",
+      "permanent": true
+    },
+    {
+      "source": "/why-should-we-use-ugo-coach-minibus-hire",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/testimonials-ugo-caoch-minibus-hire",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/terms-and-conditions-of-booking",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/about-ugo-coach-and-minibus-hire-company",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chauffer-hire-services",
+      "destination": "/private-luxury",
+      "permanent": true
+    },
+    {
+      "source": "/film-tv-location-services",
+      "destination": "/film-tv-logistics",
+      "permanent": true
+    },
+    {
+      "source": "/corporate-minibus-and-coach-hire",
+      "destination": "/corporate-accounts",
+      "permanent": true
+    },
+    {
+      "source": "/coach-hire-amersham-2",
+      "destination": "/coach-hire-amersham",
+      "permanent": true
+    },
+    {
+      "source": "/coach-hire-st-albans",
+      "destination": "/locations/st-albans",
+      "permanent": true
+    },
+    {
+      "source": "/coach-hire-watford",
+      "destination": "/locations/watford",
+      "permanent": true
+    },
+    {
+      "source": "/coach-hire-hemel-hempstead",
+      "destination": "/locations/hemel-hempstead",
+      "permanent": true
+    },
+    {
+      "source": "/coach-hire-luton",
+      "destination": "/locations/luton",
+      "permanent": true
+    },
+    {
+      "source": "/the-ugo-blog",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/latest-news/:slug*",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/uncategorized/:slug*",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/category/:slug*",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:slug*",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services/corporate-frameworks",
+      "destination": "/corporate-accounts",
+      "permanent": true
+    },
+    {
+      "source": "/services/:slug",
+      "destination": "/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/company/about",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/company/csr",
+      "destination": "/csr",
+      "permanent": true
+    },
+    {
+      "source": "/luxury-minibus-hire",
+      "destination": "/private-luxury",
+      "permanent": true
+    },
+    {
+      "source": "/commercial-contracts",
+      "destination": "/our-services",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/author/:slug*",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/feed",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/comments/feed",
+      "destination": "/blog",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/:path*" },
-    { "source": "/:path((?!api/).*)", "destination": "/index.html" }
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/:path((?!api/).*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/images/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000"
+        }
+      ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     }
   ]
