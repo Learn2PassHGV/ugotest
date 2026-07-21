@@ -95,7 +95,9 @@ export default async function handler(req: any, res: any) {
         body: JSON.stringify({
           contents,
           systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
-          generationConfig: { temperature: 0.2, maxOutputTokens: 400 },
+          // thinkingBudget 0: this is a two-sentence concierge — reasoning tokens
+          // would eat the output budget and truncate replies mid-sentence.
+          generationConfig: { temperature: 0.2, maxOutputTokens: 1000, thinkingConfig: { thinkingBudget: 0 } },
         }),
       }
     );
