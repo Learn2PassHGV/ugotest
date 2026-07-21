@@ -13,6 +13,7 @@ import { cn } from './lib/utils';
 import { ConciergeChat } from './components/ConciergeChat';
 import { sendLead, containsContactDetails, fetchChatReply } from './lib/leads';
 import { getTownBySlug } from './data/towns';
+import { getPostBySlug } from './data/posts';
 
 /* =========================================
    Deliverables Data
@@ -319,7 +320,7 @@ function HeroAndQuoteArea() {
           display: flex !important;
           align-items: center !important;
           justify-content: center !important;
-          animation: curtainDissolve 2.4s var(--luxury-inertia) both !important;
+          animation: curtainDissolve 1.2s var(--luxury-inertia) both !important;
         }
 
         .ugo-cinema-curtain span {
@@ -328,7 +329,7 @@ function HeroAndQuoteArea() {
           font-size: clamp(2rem, 5vw, 4.5rem) !important;
           font-weight: 500 !important;
           text-align: center !important;
-          animation: taglineReveal 2.4s var(--luxury-inertia) both !important;
+          animation: taglineReveal 1.2s var(--luxury-inertia) both !important;
           will-change: transform, opacity, filter !important;
         }
 
@@ -355,8 +356,8 @@ function HeroAndQuoteArea() {
           margin-bottom: 40px !important;
           padding-bottom: 10px !important;
           opacity: 0;
-          animation: homepageDelayedCascade 1.3s var(--luxury-inertia) both !important;
-          animation-delay: 2.1s !important;
+          animation: homepageDelayedCascade 1.1s var(--luxury-inertia) both !important;
+          animation-delay: 0.8s !important;
           will-change: transform, opacity, filter !important;
         }
 
@@ -387,16 +388,16 @@ function HeroAndQuoteArea() {
         /* 5. Clean Subtext Space Anchor */
         .hero-subtext-reveal {
           opacity: 0;
-          animation: homepageDelayedCascade 1.3s var(--luxury-inertia) both !important;
-          animation-delay: 2.25s !important;
+          animation: homepageDelayedCascade 1.1s var(--luxury-inertia) both !important;
+          animation-delay: 0.95s !important;
           will-change: transform, opacity, filter !important;
         }
 
         /* 6. Smart Quote Estimator */
         #smart-quote {
           opacity: 0;
-          animation: homepageDelayedCascade 1.4s var(--luxury-inertia) both !important;
-          animation-delay: 2.4s !important;
+          animation: homepageDelayedCascade 1.2s var(--luxury-inertia) both !important;
+          animation-delay: 1.1s !important;
           will-change: transform, opacity, filter !important;
         }
       `}</style>
@@ -618,13 +619,13 @@ function HeroAndQuoteArea() {
                       {/* Header Cluster */}
                       <div className="text-center mb-10">
                         <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-amber-400 mb-3 block">
-                          FAST & SECURE ESTIMATOR
+                          FAST, FREE QUOTES
                         </span>
                         <h2 className="font-serif text-3xl md:text-5xl text-white leading-tight font-medium text-glow-title">
                           Request a Smart Quote
                         </h2>
                         <p className="text-amber-400 mt-2 text-xs md:text-sm font-sans tracking-wide font-medium">
-                          Takes under 60 seconds. Guaranteed precision pricing for your itinerary.
+                          Takes under 60 seconds. A personal price for your exact journey, usually the same day.
                         </p>
                         <p className="text-slate-300 mt-3 max-w-lg mx-auto text-sm font-light leading-relaxed">
                           Select your journey details below to receive a clear quote tailored to your group needs.
@@ -980,7 +981,7 @@ function HeroAndQuoteArea() {
                                   className="space-y-4"
                                 >
                                   <span className="block text-[10px] tracking-[0.2em] font-bold text-amber-400 uppercase font-mono">
-                                    Group Volume & Journey Profile
+                                    Group Size & Journey Type
                                   </span>
                                   <div className="grid md:grid-cols-2 gap-4">
                                     {/* Capsule Block 5: Passengers */}
@@ -1543,9 +1544,9 @@ function ElitePedigree() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 mb-16 text-center select-none">
-        <h4 className="text-[10px] md:text-xs font-bold uppercase tracking-[0.35em] text-slate-800 leading-relaxed font-sans max-w-4xl mx-auto">
+        <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.35em] text-slate-800 leading-relaxed font-sans max-w-4xl mx-auto">
           TRUSTED BY LEADING BUSINESSES, LOCAL COUNCILS, SCHOOLS AND FAMILIES FOR OVER 15 YEARS
-        </h4>
+        </p>
         <p className="mt-3 text-[11px] text-slate-500 font-sans tracking-wide">
           A selection of accounts our family team has proudly served — hover any name to see the work.
         </p>
@@ -1735,12 +1736,12 @@ function LiveAIConciergeHub() {
             <li className="relative">
               <span className="absolute -left-[29px] top-1.5 w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.3)]" />
               <h4 className="font-sans text-slate-900 font-bold uppercase tracking-[0.1em] text-xs mb-1">Live Itinerary Mapping</h4>
-              <p className="font-sans text-slate-650 font-light text-sm">Select your sector profile or input your parameters to instantly generate a clean structural routing framework.</p>
+              <p className="font-sans text-slate-650 font-light text-sm">Tell the assistant your route, dates and group size and it will shape the journey with you — then our family team prices it personally.</p>
             </li>
             <li className="relative">
               <span className="absolute -left-[29px] top-1.5 w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.3)]" />
               <h4 className="font-sans text-slate-900 font-bold uppercase tracking-[0.1em] text-xs mb-1">Immediate Account Escort</h4>
-              <p className="font-sans text-slate-650 font-light text-sm">Skip the automated phone queues. Click 'Reveal Direct Lines' at any point for an un-brokered connection straight to our family base.</p>
+              <p className="font-sans text-slate-650 font-light text-sm">No phone menus, no call centres. Click 'Reveal Direct Lines' at any point for the numbers that reach Alan and Sasha's team directly.</p>
             </li>
           </ul>
         </div>
@@ -1817,7 +1818,7 @@ function LiveAIConciergeHub() {
                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-600"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12 2.1 7.1"></path><path d="m12 12 9.9 4.9"></path></svg>
                   </div>
                   <div className="bg-slate-50 border border-slate-200 rounded-2xl rounded-tl-sm p-4 text-sm text-slate-800 font-light flex items-center gap-2 max-w-[85%] shadow-sm">
-                    <span className="text-slate-500 italic text-xs mr-2 font-sans">Assistant is compiling itinerary</span>
+                    <span className="text-slate-500 italic text-xs mr-2 font-sans">Assistant is typing</span>
                     <span className="flex gap-1">
                       <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
                       <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
@@ -1863,6 +1864,7 @@ function LiveAIConciergeHub() {
                    className="bg-transparent flex-1 outline-none text-sm text-slate-800 placeholder:text-slate-400 font-light disabled:opacity-50"
                  />
                  <button 
+                   aria-label="Send message"
                    id="chat-send-btn"
                    onClick={handleSend}
                    disabled={!inputValue.trim() || isTyping}
@@ -2267,7 +2269,7 @@ function BespokeJourneyRunway({ onNavigate }: { onNavigate?: (page: PageType) =>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="mb-20 max-w-3xl">
           <span className="inline-block text-[10px] md:text-sm font-bold uppercase tracking-[0.25em] text-amber-500 mb-4 font-mono regional-label">
-            BESPOKE REGIONAL OPERATIONS
+            WHERE WE OPERATE
           </span>
           <h2 className="font-serif text-4xl md:text-5xl text-white leading-tight mb-6 regional-header">
             Our Regional Hubs
@@ -2524,6 +2526,10 @@ function BespokeJourneyRunway({ onNavigate }: { onNavigate?: (page: PageType) =>
             >
               Speak directly with our family management team on 0845 8333 456 &rarr;
             </a>
+            <span className="block sm:inline text-slate-500 text-[11px] uppercase tracking-widest sm:ml-2">
+              or call/text the owners on{' '}
+              <a href="tel:07833226623" className="text-amber-500 font-semibold hover:text-amber-400 transition-colors">07833 226 623</a>
+            </span>
           </p>
         </div>
       </div>
@@ -2921,10 +2927,15 @@ function SiteHeader({ onNavigate }: { onNavigate?: (page: PageType) => void }) {
             </div>
 
             {/* The Telephone Coordinates Node */}
-            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-slate-200">
-              <span className="hidden md:inline">24/7 CONTACT: </span>
-              <span className="text-amber-400 group-hover:text-amber-300 transition-colors font-extrabold ml-1 font-mono">
-                0845 8333 456
+            <span className="flex flex-col leading-tight">
+              <span className="text-[10px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-slate-200">
+                <span className="hidden md:inline">24/7 CONTACT: </span>
+                <span className="text-amber-400 group-hover:text-amber-300 transition-colors font-extrabold ml-1 font-mono">
+                  0845 8333 456
+                </span>
+              </span>
+              <span className="hidden lg:block text-[8px] tracking-[0.16em] uppercase text-slate-400 font-mono mt-0.5">
+                Owners direct: 07833 226 623
               </span>
             </span>
           </a>
@@ -3220,6 +3231,14 @@ function SiteHeader({ onNavigate }: { onNavigate?: (page: PageType) => void }) {
                 >
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse inline-block mr-2" />
                   CONTACT OFFICE: 0845 8333 456
+                </a>
+
+                <a
+                  href="tel:07833226623"
+                  className="text-xs font-bold tracking-[0.15em] text-slate-900 hover:text-amber-600 transition-colors duration-200 flex items-center justify-center py-3 bg-amber-500/10 border border-amber-500/30 rounded-xl"
+                >
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block mr-2" />
+                  OWNERS DIRECT: 07833 226 623
                 </a>
 
                 <button 
@@ -3966,10 +3985,10 @@ function UGOStandardsGrid() {
           {/* Left Anchor Column */}
           <div className="w-full lg:w-1/3 lg:sticky lg:top-32">
             <h2 className="font-serif text-4xl md:text-5xl text-slate-900 leading-tight mb-6 protocol-animate-left-h2">
-              The Zero-Compromise Protocol.
+              The UGO Standard.
             </h2>
             <p className="font-sans text-slate-600 font-light text-base md:text-lg leading-relaxed max-w-sm protocol-animate-left-p">
-              Four operational anchors that separate our family-run fleet from standard commercial transport providers.
+              Four commitments that separate our family-run fleet from the brokers and the big commercial operators.
             </p>
           </div>
 
@@ -4150,7 +4169,7 @@ function LogisticsArchitectureSection({ onNavigate }: { onNavigate?: (page: Page
             Our Executive Transport Services
           </h2>
           <p className="font-sans text-slate-400 font-light text-sm md:text-base leading-relaxed">
-            Select your sector framework below. Choosing a dedicated travel profile instantly tailors our fleet resources to your specific market requirements and connects you directly with a senior coordinator.
+            Choose the kind of journey you're planning and we'll show you exactly how we handle it — and put you straight through to the right person.
           </p>
         </div>
 
@@ -4369,8 +4388,9 @@ const TermsOfService = React.lazy(() => import('./TermsOfService').then(m => ({ 
 const ContactPage = React.lazy(() => import('./ContactPage').then(m => ({ default: m.ContactPage })));
 const LocationsIndex = React.lazy(() => import('./LocationsIndex').then(m => ({ default: m.LocationsIndex })));
 const NotFoundPage = React.lazy(() => import('./NotFoundPage').then(m => ({ default: m.NotFoundPage })));
+const BlogPostPage = React.lazy(() => import('./BlogPostPage').then(m => ({ default: m.BlogPostPage })));
 
-type PageType = 'home' | 'commercial' | 'private' | 'fleet' | 'corporate' | 'private-luxury' | 'strategic-events' | 'strategic-event-logistics' | 'film-tv-logistics' | 'mass-transit-shuttles' | 'workplace-shuttles' | 'corporate-roadshows' | 'wedding-transport' | 'greater-london' | 'home-counties' | 'airport-hubs' | 'film-and-events' | 'st-albans' | 'watford' | 'hemel' | 'luton' | 'compliance' | 'about' | 'blog' | 'csr' | 'privacy' | 'terms' | 'contact' | 'locations-index' | 'not-found' | `town-${string}`;
+type PageType = 'home' | 'commercial' | 'private' | 'fleet' | 'corporate' | 'private-luxury' | 'strategic-events' | 'strategic-event-logistics' | 'film-tv-logistics' | 'mass-transit-shuttles' | 'workplace-shuttles' | 'corporate-roadshows' | 'wedding-transport' | 'greater-london' | 'home-counties' | 'airport-hubs' | 'film-and-events' | 'st-albans' | 'watford' | 'hemel' | 'luton' | 'compliance' | 'about' | 'blog' | 'csr' | 'privacy' | 'terms' | 'contact' | 'locations-index' | 'not-found' | `town-${string}` | `post-${string}`;
 
 const METADATA_MAP: Partial<Record<PageType, { title: string; description: string }>> = {
   'home': {
@@ -4509,6 +4529,13 @@ const getPageFromPath = (path: string): PageType => {
     return 'not-found';
   }
 
+  // Blog guides: /blog/<slug>
+  const postMatch = p.match(/^\/blog\/([a-z0-9-]+)$/);
+  if (postMatch) {
+    if (getPostBySlug(postMatch[1])) return `post-${postMatch[1]}` as PageType;
+    return 'not-found';
+  }
+
   switch (p) {
     case '/':
     case '':
@@ -4608,6 +4635,7 @@ const PAGE_TO_PATH_MAP: Record<string, string> = {
 
 const pageToPath = (page: PageType): string => {
   if (page.startsWith('town-')) return `/coach-hire-${page.slice(5)}`;
+  if (page.startsWith('post-')) return `/blog/${page.slice(5)}`;
   return PAGE_TO_PATH_MAP[page] || '/';
 };
 
@@ -4622,6 +4650,12 @@ const getMetaForPage = (page: PageType): { title: string; description: string } 
         title: `Coach Hire ${town.name} | Minibus Hire ${town.name} | UGO`,
         description: town.metaDescription,
       };
+    }
+  }
+  if (page.startsWith('post-')) {
+    const post = getPostBySlug(page.slice(5));
+    if (post) {
+      return { title: `${post.title} | UGO`, description: post.metaDescription };
     }
   }
   if (page === 'privacy') {
@@ -5062,7 +5096,7 @@ export default function App() {
           }} />
         )}
         {currentPage === 'blog' && (
-          <TransportLogisticsBlog onNavigateToHomeAndBook={(targetType) => {
+          <TransportLogisticsBlog onOpenPost={(slug) => navigateAny(`post-${slug}`)} onNavigateToHomeAndBook={(targetType) => {
             setCurrentPage('home');
             setTimeout(() => {
               const formContainer = document.getElementById('smart-quote');
@@ -5094,6 +5128,18 @@ export default function App() {
         {currentPage === 'not-found' && (
           <NotFoundPage onNavigate={(page) => navigateAny(page)} />
         )}
+        {currentPage.startsWith('post-') && (() => {
+          const post = getPostBySlug(currentPage.slice(5));
+          return post ? (
+            <BlogPostPage
+              post={post}
+              onNavigate={(page) => navigateAny(page)}
+              onRequestQuote={goToQuote}
+            />
+          ) : (
+            <NotFoundPage onNavigate={(page) => navigateAny(page)} />
+          );
+        })()}
         {currentPage.startsWith('town-') && (() => {
           const town = getTownBySlug(currentPage.slice(5));
           return town ? (

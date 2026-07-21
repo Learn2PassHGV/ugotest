@@ -13,9 +13,10 @@ import { cn } from './lib/utils';
 
 interface TransportLogisticsBlogProps {
   onNavigateToHomeAndBook?: (locationPreload: string) => void;
+  onOpenPost?: (slug: string) => void;
 }
 
-export function TransportLogisticsBlog({ onNavigateToHomeAndBook }: TransportLogisticsBlogProps) {
+export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: TransportLogisticsBlogProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const toggleFaq = (index: number) => {
@@ -30,41 +31,44 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook }: TransportLog
 
   const articles = [
     {
-      title: "Organising Large-Scale Coach Transfers: Preventing Event Delays",
-      brief: "A practical guide to coordinating smooth group arrivals and departures for major events. Learn how to design loading zones, manage peak passenger hours, and coordinate multiple coaches without delays.",
+      slug: "coach-hire-cost-guide",
+      title: "How Much Does Coach & Minibus Hire Cost? An Honest 2026 Guide",
+      brief: "The question everyone asks, answered properly: the five factors that set the price, realistic ballparks, and how to keep costs down without cutting corners on safety.",
       bgClass: "bg-[#050C1A] text-white border-[#050C1A] shadow-2xl",
       btnClass: "bg-amber-500 hover:bg-amber-600 text-slate-950",
-      btnText: "Plan Event Transport With Us",
+      btnText: "Read the pricing guide",
       bullets: [
-        "Designing efficient coach loading zones",
-        "Managing high-volume arrival and departure schedules",
-        "Live GPS tracking and professional marshals on-site"
+        "The five factors every quote comes down to",
+        "Realistic ballparks for minibuses and full coaches",
+        "How to spot a quote that's too good to be true"
       ],
       icon: <Activity className="w-8 h-8 text-amber-500 mb-6" />
     },
     {
-      title: "Regulatory Access: London Low Emission Compliance",
-      brief: "What London's ULEZ and low emission zones mean for group travel: which vehicles comply, who pays what, and why our Euro 6 fleet travels into central London without surcharges or penalties.",
+      slug: "school-trip-transport-checklist",
+      title: "School Trip Transport: The Compliance Checklist Organisers Should Use",
+      brief: "For teachers, EVCs and trip organisers: the exact paperwork to demand from any coach operator — DBS checks, licensing, insurance, driver hours — and the questions worth asking beyond the legal minimum.",
       bgClass: "bg-white text-[#050C1A] border-slate-200 shadow-xl",
       btnClass: "bg-[#050C1A] hover:bg-slate-900 text-white",
-      btnText: "Ask About ULEZ-Compliant Hire",
+      btnText: "Read the checklist",
       bullets: [
-        "TfL low emission zone and ULEZ boundary rules",
-        "Euro 6 diesel mechanical emission performance audits",
-        "Corporate penalty avoidance frameworks of commercial fleets"
+        "The non-negotiables: DVSA licence, enhanced DBS, insurance",
+        "Questions that reveal a genuine school operator",
+        "How regular routes and tenders work"
       ],
       icon: <BookOpen className="w-8 h-8 text-amber-500 mb-6" />
     },
     {
-      title: "Logistics Case Study: Studio Crew Routing Dynamics",
-      brief: "How production unit moves actually work: early call times, split shifts, unbranded vehicles for cast privacy, and drivers who understand that a schedule slip costs a production real money.",
+      slug: "wedding-guest-transport-planning",
+      title: "Wedding Guest Transport: Shuttles, Timings and Costs",
+      brief: "How the timed shuttle loop works, the schedule that actually holds on the day, how many vehicles you really need, and what changes the price — from an operator that does this every summer weekend.",
       bgClass: "bg-[#050C1A] text-white border-[#050C1A] shadow-2xl",
       btnClass: "bg-amber-500 hover:bg-amber-600 text-slate-950",
-      btnText: "Talk To Our Production Team",
+      btnText: "Read the wedding guide",
       bullets: [
-        "Unbranded vehicle dispatching discretion models",
-        "24/7 call time monitoring and real time routing adjustments",
-        "Seamless driver handovers keeping production schedules intact"
+        "The shuttle loop: why it beats one big coach",
+        "Timings that hold, worked back from the ceremony",
+        "What wedding transport realistically costs"
       ],
       icon: <Settings className="w-8 h-8 text-amber-500 mb-6" />
     }
@@ -87,7 +91,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook }: TransportLog
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#050C1A]/5 border border-[#050C1A]/10 mb-6 select-none shadow-sm">
             <FileText className="w-3.5 h-3.5 text-amber-600 animate-pulse" />
             <span className="font-mono text-[9px] md:text-10px font-extrabold uppercase tracking-[0.25em] text-[#050C1A]">
-              ENTERPRISE INTEL &amp; OPERATIONAL INSIGHTS
+              GUIDES &amp; INSIGHTS FROM THE TEAM
             </span>
           </div>
 
@@ -95,11 +99,11 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook }: TransportLog
             className="font-serif text-4xl md:text-5xl lg:text-7xl text-[#050C1A] font-medium leading-tight mb-8 max-w-4xl mx-auto tracking-tight"
             itemProp="headline"
           >
-            Transport Logistics Blog: Corporate Fleet &amp; Event Operations Intel
+            Guides &amp; Insights from a Working Coach Operator
           </h1>
 
           <p className="font-sans text-slate-600 font-light text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
-            Technical optimisation strategies, regulatory compliance briefings, and large-scale passenger transit research compiled explicitly for UK procurement directors, corporate travel desks, and event logistics managers.
+            Straight answers on pricing, school transport compliance and event planning — written by the family team who run the vehicles, not a content agency.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -209,7 +213,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook }: TransportLog
                 </div>
 
                 <button
-                  onClick={() => handleActionClick("Logistics Blog Reference")}
+                  onClick={() => { if (item.slug && onOpenPost) { onOpenPost(item.slug); } else { handleActionClick("Logistics Blog Reference"); } }}
                   className={cn(
                     "w-full text-center py-3.5 px-5 rounded-xl text-xs font-bold uppercase tracking-[0.15em] transition-all cursor-pointer font-sans duration-200 mt-2",
                     item.btnClass

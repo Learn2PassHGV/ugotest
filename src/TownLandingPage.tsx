@@ -80,6 +80,10 @@ export function TownLandingPage({ town, onNavigate, onRequestQuote }: TownLandin
               0845 8333 456
             </a>
           </div>
+          <p className="mt-5 text-[11px] uppercase tracking-[0.18em] text-slate-400 font-sans">
+            Or call/text the owners direct:{' '}
+            <a href="tel:07833226623" className="text-amber-400 font-semibold hover:text-amber-300 transition-colors">07833 226 623</a>
+          </p>
         </div>
       </section>
 
