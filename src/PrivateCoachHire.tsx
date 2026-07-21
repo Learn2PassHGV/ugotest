@@ -252,7 +252,7 @@ export function PrivateCoachHire({ onNavigateToHomeAndBook }: PrivateCoachHirePr
                       Mid-Size VIP Group Coach
                     </td>
                     <td className="py-6 px-6 md:px-8 font-sans font-light">
-                      19 to 30 seating layouts featuring fully integrated climate modules and tinted privacy glass co-ordinates
+                      19 to 30 seats with full climate control and tinted privacy glass
                     </td>
                     <td className="py-6 px-6 md:px-8 font-sans font-light text-slate-600">
                       High status transit to Wembley Stadium, chauffeur driven group travel, and luxury minibus rental Hertfordshire routes
@@ -435,20 +435,20 @@ export function PrivateCoachHire({ onNavigateToHomeAndBook }: PrivateCoachHirePr
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <span className="reveal-layer-hidden reveal-sec-header font-mono text-[9px] font-extrabold text-amber-500 uppercase tracking-[0.3em] block mb-4">
-            REGULAR DESPATCH PORTAL
+            PRIVATE GROUP TRAVEL
           </span>
           <h2 className="reveal-layer-hidden reveal-sec-header font-serif text-3xl md:text-5xl text-white mb-6">
-            Acquire Seamless Private Leisure Travel
+            Your Group, Your Day, Our Wheels
           </h2>
           <p className="reveal-layer-hidden reveal-sec-desc font-sans text-slate-350 text-xs md:text-base leading-relaxed max-w-2xl mx-auto mb-10 font-light">
-            Bring supreme family-operated co-ordination and zero-delay multi-vehicle deployment to your coming wedding, sporting, or touring event.
+            Weddings, day trips, tours and celebrations — planned personally by the family team and driven in pristine unbranded vehicles. Send us the details and we'll price it properly.
           </p>
 
           <button
             onClick={() => handleActionClick("Private Coach Hire")}
             className="reveal-layer-hidden reveal-sec-btn group inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-sans text-xs uppercase tracking-[0.2em] font-extrabold py-4 px-10 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-xl hover:shadow-[0_0_30px_rgba(245,158,11,0.25)] pointer-events-auto cursor-pointer"
           >
-            Launch Private Booking Interface
+            Get My Private Hire Quote
             <ArrowRight className="w-4 h-4 text-slate-950 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>

@@ -111,11 +111,11 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
               onClick={() => handleActionClick("Logistics Blog Reference")}
               className="w-full sm:w-auto bg-[#050C1A] hover:bg-slate-900 text-white font-sans text-xs uppercase tracking-[0.2em] font-extrabold py-4 px-8 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.01] cursor-pointer"
             >
-              Access Reference Index
+              Get a Fast Quote
             </button>
             <button
               onClick={() => {
-                const kpiSection = document.getElementById("blog-resource-table");
+                const kpiSection = document.getElementById("blog-guides");
                 if (kpiSection) {
                   kpiSection.scrollIntoView({ behavior: "smooth" });
                 }
@@ -132,10 +132,10 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
       <section className="bg-[#050C1A] text-white py-12 border-y border-white/5 relative z-10">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="font-mono text-[9px] font-extrabold tracking-[0.25em] text-amber-500 uppercase mb-3 text-center">
-            OPERATIONAL KNOWLEDGE BASE
+            WHY WE WRITE THESE
           </div>
           <p className="font-serif text-sm md:text-base leading-relaxed text-slate-200 italic font-light max-w-3xl mx-auto text-center">
-            "UGO establishes clear industry authority. We go beyond basic vehicle provision by publishing data-dense logistics frameworks, real-time routing analysis, and compliance reporting guides to ensure your group transit operations run with absolute timeline efficiency."
+            "The same questions come up on the phone every week — what will it cost, what paperwork should a school see, how do wedding shuttles actually run. These guides are those answers, written down properly."
           </p>
           <div className="w-24 h-0.5 bg-amber-500 mt-5 mx-auto" />
         </div>
@@ -146,7 +146,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
         <div className="max-w-4xl mx-auto px-6 font-sans text-slate-650 text-sm md:text-base leading-relaxed space-y-6">
           <div className="border-l-4 border-amber-500 pl-6 my-8">
             <p className="font-bold text-[#050C1A] text-base md:text-lg">
-              UGO provides comprehensive technical breakdowns and regulatory tracking guides regarding nationwide corporate ground transportation, delivering actionable data metrics to streamline enterprise fleet procurement.
+              Plain-English guides to hiring coaches and minibuses well: what things really cost, what good compliance looks like, and how to plan group travel that runs on time.
             </p>
           </div>
           
@@ -160,15 +160,15 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
         </div>
       </section>
 
-      {/* 4. TECHNICAL ARTICLE GRID */}
-      <section className="py-24 relative z-10 border-b border-slate-200 bg-[#F9F9FB]">
+      {/* 4. GUIDES GRID */}
+      <section id="blog-guides" className="py-24 relative z-10 border-b border-slate-200 bg-[#F9F9FB]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="font-mono text-10px font-extrabold text-amber-600 uppercase tracking-[0.2em] mb-4 block">
-              Latest Insights &amp; Regular Dispatch
+              Start Here
             </span>
             <h2 className="font-serif text-3xl md:text-4.5xl text-[#050C1A] font-medium leading-tight">
-              Featured Operational Research Case Studies
+              Three Guides Worth Reading Before You Book
             </h2>
             <div className="w-12 h-1 bg-amber-500/80 mx-auto mt-6 rounded-full" />
           </div>
@@ -185,10 +185,10 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="font-mono text-[9px] font-bold tracking-widest uppercase opacity-75">
-                      Latest Insights &amp; Regular Dispatch
+                      From the UGO Team
                     </span>
                     <span className="text-[9px] font-semibold bg-amber-500/10 text-amber-600 px-2 py-0.5 rounded uppercase font-mono">
-                      INDEX {idx + 1}
+                      GUIDE {idx + 1}
                     </span>
                   </div>
 
@@ -232,13 +232,13 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <span className="font-mono text-10px font-extrabold text-amber-600 uppercase tracking-[0.25em] block mb-3">
-              OUR RESOURCE HUB
+              WHAT WE COVER
             </span>
             <h2 className="font-serif text-3xl md:text-4.5xl leading-tight text-[#050C1A]">
-              Industry News &amp; Guides
+              What We Write About — and Who It's For
             </h2>
             <p className="font-sans text-xs md:text-sm text-slate-500 font-light max-w-2xl mx-auto leading-relaxed mt-4">
-              A guide to our industry articles, safety topics, and corporate transport frameworks.
+              The topics these guides cover and the people they're written for. More are on the way — tell us what would help and we'll write it.
             </p>
           </div>
 
@@ -255,35 +255,35 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
                 <tbody className="divide-y divide-slate-250 text-slate-750">
                   <tr className="hover:bg-slate-100/50 transition-colors duration-200 text-sm">
                     <td className="py-6 px-6 md:px-8 font-semibold text-[#050C1A]">
-                      Workforce Commuter Loops
+                      Pricing &amp; Getting a Good Quote
                     </td>
                     <td className="py-6 px-6 md:px-8 font-sans font-light">
-                      Employee shuttle optimisation and site route co-ordination tracking
+                      What sets the price, realistic ballparks, and how to spot a quote that's too cheap to be safe
                     </td>
                     <td className="py-6 px-6 md:px-8 font-sans font-semibold text-slate-600">
-                      Facilities and Human Resources procurement managers
+                      Anyone booking a coach or minibus for the first time
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-100/50 transition-colors duration-200 text-sm">
                     <td className="py-6 px-6 md:px-8 font-semibold text-[#050C1A]">
-                      Regulatory &amp; Environmental Access
+                      Safety, Compliance &amp; ULEZ
                     </td>
                     <td className="py-6 px-6 md:px-8 font-sans font-light">
-                      London ULEZ protocols and Euro 6 low emission compliance data
+                      DVSA licensing, enhanced DBS checks, seat belts, insurance and what London's clean-air rules mean for group travel
                     </td>
                     <td className="py-6 px-6 md:px-8 font-sans font-semibold text-slate-600">
-                      Corporate risk management and legal compliance desks
+                      Teachers, trip organisers and corporate bookers
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-100/50 transition-colors duration-200 text-sm">
                     <td className="py-6 px-6 md:px-8 font-semibold text-[#050C1A]">
-                      Strategic Mass Event Transit
+                      Weddings &amp; Big Events
                     </td>
                     <td className="py-6 px-6 md:px-8 font-sans font-light">
-                      High frequency loop calculations and crowd flow management plans
+                      Shuttle loops, timings that hold on the day, and moving hundreds of guests without queues
                     </td>
                     <td className="py-6 px-6 md:px-8 font-sans font-semibold text-slate-600">
-                      Festival operations directors and stadium logistics co-ordinators
+                      Couples, planners and venue co-ordinators
                     </td>
                   </tr>
                 </tbody>
@@ -292,7 +292,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
 
             {/* Mobile swipe alert */}
             <div className="lg:hidden text-center py-4 bg-[#EFEEF3] border-t border-slate-200 font-sans text-[10px] text-[#050C1A]/60 uppercase tracking-widest font-medium select-none">
-              ← Swipe right to view full indexing table specifications →
+              ← Swipe to see the full table →
             </div>
           </div>
         </div>
@@ -310,10 +310,10 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
               FREQUENTLY ASKED QUESTIONS
             </span>
             <h2 className="font-serif text-3xl md:text-4xl text-[#050C1A] font-medium">
-              Blog and Article FAQ
+              About These Guides
             </h2>
             <p className="font-sans text-xs md:text-sm text-slate-600 font-light mt-3 max-w-lg mx-auto">
-              Answers to common questions about our articles and resources.
+              Two quick answers about how we write and share them.
             </p>
           </div>
 
@@ -332,7 +332,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
                   className="font-serif text-base md:text-lg text-[#050C1A] font-medium group-hover:text-amber-600 transition-colors duration-200 pr-4"
                   itemProp="name"
                 >
-                  How often does the UGO logistics team publish regulatory and compliance updates?
+                  How often are these guides updated?
                 </span>
                 <ChevronDown 
                   className={cn(
@@ -355,7 +355,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
                   className="font-sans text-xs md:text-sm text-slate-600 leading-relaxed font-light"
                   itemProp="text"
                 >
-                  Our senior transit co-ordinators monitor DVSA framework revisions, Transport for London environmental policy adjustments, and major arterial road grid changes in real-time. We publish immediate, actionable technical briefings the moment regulatory variances affect corporate fleet logistics.
+                  We review them whenever something material changes — pricing seasons, ULEZ boundaries, DVSA guidance for school transport — and update the guide rather than leaving old advice up. If you spot anything that looks out of date, call us and we'll put it right.
                 </div>
               </div>
             </div>
@@ -374,7 +374,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
                   className="font-serif text-base md:text-lg text-[#050C1A] font-medium group-hover:text-amber-600 transition-colors duration-200 pr-3"
                   itemProp="name"
                 >
-                  Can we share these logistics case studies and passenger flow guides with our internal board for procurement tenders?
+                  Can we use these guides in school or company paperwork?
                 </span>
                 <ChevronDown 
                   className={cn(
@@ -397,7 +397,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
                   className="font-sans text-xs md:text-sm text-slate-600 leading-relaxed font-light"
                   itemProp="text"
                 >
-                  Yes. Every piece of research and operational data published in our transport logistics repository is fully open-access, specifically designed to help corporate travel desks draft comprehensive risk assessments and vendor registration applications.
+                  Yes — share them freely. Teachers use the compliance checklist in trip-planning paperwork and companies use the pricing guide for travel budgets. If you need anything confirmed in writing for a tender or risk assessment, email sasha@coaches.business and we'll help.
                 </div>
               </div>
             </div>
@@ -412,20 +412,21 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <span className="font-mono text-[9px] font-extrabold text-amber-500 uppercase tracking-[0.3em] block mb-4">
-            OPERATIONAL LOGISTICS INTERPRETATION
+            READY WHEN YOU ARE
           </span>
           <h2 className="font-serif text-3xl md:text-5xl text-white mb-6 leading-tight">
-            Structure Your Fleet Routing Compliantly
+            Read Enough? Let's Price Your Journey.
           </h2>
           <p className="font-sans text-slate-300 text-xs md:text-base leading-relaxed max-w-2xl mx-auto mb-10 font-light">
-            Connect directly with verified transport assets. Enter route, frequency, and fleet capacities on our booking platform to view instant operational availabilities.
+            Send your date, pickup and group size through the Smart Quote form and the family team will come back with a clear price — usually the same day. Or call the owners direct on{' '}
+            <a href="tel:07833226623" className="text-amber-400 font-semibold hover:text-amber-300 transition-colors">07833 226 623</a>.
           </p>
 
           <button
             onClick={() => handleActionClick("Logistics Blog Reference")}
             className="group inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-sans text-xs uppercase tracking-[0.2em] font-extrabold py-4 px-10 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-xl hover:shadow-[0_0_30px_rgba(245,158,11,0.25)] pointer-events-auto cursor-pointer"
           >
-            Launch Audited Booking Engine
+            Get My Fast Quote
             <ArrowRight className="w-4 h-4 text-slate-950 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>

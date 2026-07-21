@@ -434,20 +434,20 @@ export function HomeCountiesNetwork({ onNavigateToHomeAndBook }: HomeCountiesNet
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <span className="font-mono text-[9px] font-extrabold text-amber-500 uppercase tracking-[0.3em] block mb-4 reveal-layer-hidden reveal-label-node">
-            REGIONAL DISPATCH CONTROL
+            HERTS, BEDS & BUCKS
           </span>
           <h2 className="font-serif text-3xl md:text-5xl text-white mb-6 leading-tight reveal-layer-hidden reveal-header-node">
-            Structure Your Home Counties Transit Network
+            Plan Group Travel Across the Home Counties
           </h2>
           <p className="font-sans text-slate-350 text-xs md:text-base leading-relaxed max-w-2xl mx-auto mb-10 font-light reveal-layer-hidden reveal-desc-node">
-            Co-ordinate commuter fleets, high capacity wedding shuttle plans, or executive private group schedules across regional corridors. Forward below to launch booking pre-sets.
+            Staff shuttles, wedding transport and private group travel across Hertfordshire, Bedfordshire and Buckinghamshire — planned by a family team who drive these roads every day.
           </p>
 
           <button
             onClick={() => handleActionClick("Home Counties Network")}
             className="group inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-sans text-xs uppercase tracking-[0.2em] font-extrabold py-4 px-10 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-xl hover:shadow-[0_0_30px_rgba(245,158,11,0.25)] pointer-events-auto cursor-pointer reveal-layer-hidden reveal-btn-node"
           >
-            Launch Regional Booking System
+            Get a Home Counties Quote
             <ArrowRight className="w-4 h-4 text-slate-950 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>

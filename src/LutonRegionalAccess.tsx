@@ -334,7 +334,7 @@ export function LutonRegionalAccess({ onNavigateToHomeAndBook }: LutonRegionalAc
               Luton Airport Logistics Q&amp;A
             </h2>
             <p className="font-sans text-xs md:text-sm text-slate-400 font-light mt-3 max-w-lg mx-auto reveal-layer-hidden reveal-desc-node">
-              Addressing airline flight rescue logistics, FBO terminal clearance standards, and unbranded fleet placements.
+              Covering delayed-flight pickups, private terminal (FBO) transfers and unbranded fleet options.
             </p>
           </div>
 
@@ -433,20 +433,20 @@ export function LutonRegionalAccess({ onNavigateToHomeAndBook }: LutonRegionalAc
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <span className="font-mono text-[9px] font-extrabold text-amber-500 uppercase tracking-[0.3em] block mb-4 reveal-layer-hidden reveal-label-node">
-            FLIGHT GATEWAY ACTIVATION
+            LUTON & AIRPORT TRANSFERS
           </span>
           <h2 className="font-serif text-3xl md:text-5xl text-white mb-6 leading-tight reveal-layer-hidden reveal-header-node">
-            Structure Local Luton Transit
+            Book Luton Coach Hire & Airport Transfers
           </h2>
           <p className="font-sans text-slate-350 text-xs md:text-base leading-relaxed max-w-2xl mx-auto mb-10 font-light reveal-layer-hidden reveal-desc-node">
-            Co-ordinate high volume airline rescues, Harrods FBO delegations, or regional Stevenage commuter grids with absolute security. Transition below to align flight co-ordinates.
+            Group airport transfers with flight tracking, business shuttles and private group travel across Luton, Dunstable and Bedfordshire. Tell us your dates and we'll take care of the rest.
           </p>
 
           <button
             onClick={() => handleActionClick("Luton & Regional Access")}
             className="group inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-sans text-xs uppercase tracking-[0.2em] font-extrabold py-4 px-10 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-xl hover:shadow-[0_0_30px_rgba(245,158,11,0.25)] pointer-events-auto cursor-pointer reveal-layer-hidden reveal-btn-node"
           >
-            Launch Gateway Booking Engine
+            Get a Luton Quote
             <ArrowRight className="w-4 h-4 text-slate-950 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>

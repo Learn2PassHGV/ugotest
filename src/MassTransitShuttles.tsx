@@ -77,8 +77,8 @@ export function MassTransitShuttles({ onNavigateToHomeAndBook }: MassTransitShut
       ctaText: "Plan Stadium Travel",
       bullets: [
         "Efficient passenger loading systems for high-capacity event transport",
-        "Coordinated stadium event transit network solutions linking rail hubs dynamically",
-        "Active team of on-site transport marshals managing crowd safety and security patterns"
+        "Coordinated shuttle links between stadiums, rail hubs and park-and-ride sites",
+        "On-site transport marshals managing crowd flow and passenger safety"
       ],
       icon: <Users className="w-8 h-8 text-amber-500 mb-6" />
     },
@@ -153,7 +153,7 @@ export function MassTransitShuttles({ onNavigateToHomeAndBook }: MassTransitShut
               onClick={() => handleActionClick("Mass Transit Shuttles")}
               className="w-full sm:w-auto bg-slate-950 hover:bg-slate-900 text-white font-sans text-xs uppercase tracking-[0.2em] font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.01] cursor-pointer"
             >
-              Initiate Transit Consultation
+              Plan My Shuttle Operation
             </button>
             <button
               onClick={() => {
@@ -246,7 +246,7 @@ export function MassTransitShuttles({ onNavigateToHomeAndBook }: MassTransitShut
       <section className="py-16 bg-[#FAFAFC] border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <p className="reveal-layer-hidden reveal-sec-desc font-sans text-xs text-slate-500 leading-relaxed font-light tracking-wide">
-            We provide high-quality mass transit shuttles and peak-time employee shuttle services. We manage festival coach travel, high-capacity event transport, and regular shuttle loops for both private companies and public organizations. Backed by experienced on-site supervisors and transport marshals, we ensure safe passenger boarding and seamless travel logistics for events of any size.
+            We provide high-quality mass transit shuttles and peak-time employee shuttle services. We manage festival coach travel, high-capacity event transport, and regular shuttle loops for both private companies and public organisations. Backed by experienced on-site supervisors and transport marshals, we ensure safe passenger boarding and seamless travel logistics for events of any size.
           </p>
         </div>
       </section>

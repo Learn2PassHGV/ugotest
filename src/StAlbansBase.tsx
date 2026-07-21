@@ -427,7 +427,7 @@ export function StAlbansBase({ onNavigateToHomeAndBook }: StAlbansBaseProps) {
             onClick={() => handleActionClick("St Albans Base")}
             className="group inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-sans text-xs uppercase tracking-[0.2em] font-extrabold py-4 px-10 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-xl hover:shadow-[0_0_30px_rgba(245,158,11,0.25)] pointer-events-auto cursor-pointer"
           >
-            Launch Core Booking Engine
+            Get a St Albans Quote
             <ArrowRight className="w-4 h-4 text-slate-950 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>

@@ -87,7 +87,7 @@ export function HemelHempsteadCore({ onNavigateToHomeAndBook }: HemelHempsteadCo
       brief: "Highly compliant transport structures for independent colleges and local schools. Co-ordinating weekly swimming loops, sports fixtures, and educational field trips with absolute peace of mind.",
       bgClass: "bg-[#050C1A] text-white border-white/5 shadow-2xl",
       btnClass: "bg-amber-500 hover:bg-amber-600 text-slate-950",
-      ctaText: "Deploy Academic Fleet",
+      ctaText: "Book School Transport",
       bullets: [
         "Fully vetted local driving teams with active enhanced DBS credentials",
         "School travel packages serving Kings Langley group travel criteria",
@@ -448,7 +448,7 @@ export function HemelHempsteadCore({ onNavigateToHomeAndBook }: HemelHempsteadCo
             onClick={() => handleActionClick("Hemel Hempstead Core")}
             className="group inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-sans text-xs uppercase tracking-[0.2em] font-extrabold py-4 px-10 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-xl hover:shadow-[0_0_30px_rgba(245,158,11,0.25)] pointer-events-auto cursor-pointer reveal-layer-hidden reveal-btn-node"
           >
-            Launch Core Booking Engine
+            Get a Hemel Hempstead Quote
             <ArrowRight className="w-4 h-4 text-slate-950 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>

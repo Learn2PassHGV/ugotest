@@ -446,20 +446,20 @@ export function CorporateRoadshows({ onNavigateToHomeAndBook }: CorporateRoadsho
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <span className="reveal-layer-hidden reveal-sec-header font-mono text-[9px] font-extrabold text-amber-500 uppercase tracking-[0.3em] block mb-4">
-            PRIORITY SCHEDULING INTERFACES
+            ROADSHOWS, RUN PROPERLY
           </span>
           <h2 className="reveal-layer-hidden reveal-sec-header font-serif text-3xl md:text-5xl text-white mb-6">
-            Acquire Corporate Travel Dispatch Rights
+            Plan Your Next Roadshow With Us
           </h2>
           <p className="reveal-layer-hidden reveal-sec-desc font-sans text-slate-350 text-xs md:text-base leading-relaxed max-w-2xl mx-auto mb-10 font-light">
-            Bring supreme operational coordination to your next financial milestone. Secure reliable unbranded executive assets and a Mayfair corporate travel coordinator to navigate critical timing windows seamlessly.
+            Multi-stop city itineraries in unbranded executive vehicles, with one dedicated coordinator who knows your schedule minute by minute. Send us the dates and we'll build the plan.
           </p>
 
           <button
             onClick={() => handleActionClick("Corporate Roadshow")}
             className="reveal-layer-hidden reveal-sec-btn group inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-sans text-xs uppercase tracking-[0.2em] font-extrabold py-4 px-10 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-xl hover:shadow-[0_0_30px_rgba(245,158,11,0.25)] pointer-events-auto cursor-pointer"
           >
-            Launch Roadshow Dispatch Desk
+            Plan My Roadshow
             <ArrowRight className="w-4 h-4 text-slate-950 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>

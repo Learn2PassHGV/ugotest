@@ -4072,7 +4072,7 @@ function LogisticsArchitectureSection({ onNavigate }: { onNavigate?: (page: Page
       title: "Strategic Events",
       preview: "Mobilised for high-capacity group transport, sports teams, film production, and major festivals.",
       expandedCopy: "Synchronising mass transport networks for filming crews, sports teams, major festivals, and urgent multi-coach deployments.",
-      buttonText: "Deploy Event Logistics →",
+      buttonText: "Plan Event Transport →",
       targetType: "Sports/Music Event"
     }
   ];
@@ -4415,7 +4415,7 @@ const METADATA_MAP: Partial<Record<PageType, { title: string; description: strin
   },
   'private-luxury': {
     title: "Elite Private Luxury Minibus Hire | UGO",
-    description: "Exquisite VIP travel experiences. Travel in pristine, unbranded luxury Mercedes-Benz minibuses with premium climate control, plush leather seating, and discrete professional drivers."
+    description: "Exquisite VIP travel experiences. Travel in pristine, unbranded luxury Mercedes-Benz minibuses with premium climate control, plush leather seating, and discreet professional drivers."
   },
   'wedding-transport': {
     title: "Luxury Wedding Guest Transport & Coach Hire | UGO",

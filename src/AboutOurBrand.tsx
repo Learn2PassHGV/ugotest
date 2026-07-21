@@ -153,7 +153,7 @@ export function AboutOurBrand({ onNavigateToHomeAndBook }: AboutOurBrandProps) {
             </p>
 
             <p>
-              As a leading corporate travel provider St Albans and premier coach operator Hertfordshire specialist, we deploy transport configurations directly aligned with enterprise risk parameters. Being a low emission coach operator allows our unbranded luxury vehicles to navigate London emission metrics effortlessly. This absolute adherence to clear standards underpins our corporate account reliability metrics, positioning UGO as the primary elite ground transportation ethics authority.
+              Based in St Albans and working across Hertfordshire and London, we plan every journey around the standards corporate clients audit for — licensing, insurance, driver vetting and clean-air compliance. Our modern low-emission fleet travels into London without ULEZ penalties, and account clients get the same family-level care on the hundredth booking as they did on the first.
             </p>
           </div>
         </div>
@@ -257,10 +257,10 @@ export function AboutOurBrand({ onNavigateToHomeAndBook }: AboutOurBrandProps) {
                       Fleet Ownership Framework
                     </td>
                     <td className="py-6 px-6 md:px-8 font-sans font-light">
-                      100% Wholly Owned and Maintained Fleet Assets
+                      100% Wholly Owned and Maintained Fleet
                     </td>
                     <td className="py-6 px-6 md:px-8 font-sans font-semibold text-amber-500">
-                      Complete control over scheduling timelines and vehicle cleaning parameters.
+                      Complete control over scheduling, maintenance and valeting — nothing subcontracted.
                     </td>
                   </tr>
                   <tr className="hover:bg-white/[0.01] transition-colors duration-200 text-sm">

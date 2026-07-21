@@ -415,20 +415,20 @@ export function CorporateResponsibility({ onNavigateToHomeAndBook }: CorporateRe
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <span className="font-mono text-[9px] font-extrabold text-amber-500 uppercase tracking-[0.3em] block mb-4">
-            SECURE COMPLIANT VEHICLE DESPATCH
+            GREENER GROUP TRAVEL
           </span>
           <h2 className="font-serif text-3xl md:text-5xl text-white mb-6 leading-tight">
-            Deploy ESG Vetted Transit Today
+            Travel Greener Without Compromising Comfort
           </h2>
           <p className="font-sans text-slate-300 text-xs md:text-base leading-relaxed max-w-2xl mx-auto mb-10 font-light">
-            Eliminate operational footprints with our modern Euro 6 unbranded fleet. Pre-load your request parameters inside our portal to examine wholesale transit parameters instantly.
+            One modern Euro 6 coach takes dozens of cars off the road. Tell us your journey and we'll plan it cleanly, efficiently and comfortably — with a clear price, not a calculator.
           </p>
 
           <button
             onClick={() => handleActionClick("Corporate Responsibility Framework")}
             className="group inline-flex items-center gap-3 bg-amber-500/90 hover:bg-amber-600 text-[#050C1A] font-sans text-xs uppercase tracking-[0.2em] font-extrabold py-4 px-10 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-xl hover:shadow-[0_0_30px_rgba(245,158,11,0.2)] pointer-events-auto cursor-pointer"
           >
-            Launch Audited Booking Engine
+            Get a Fast Quote
             <ArrowRight className="w-4 h-4 text-[#050C1A] transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>

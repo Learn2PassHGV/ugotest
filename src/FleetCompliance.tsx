@@ -290,7 +290,7 @@ export function FleetCompliance({ onNavigateToHomeAndBook }: FleetComplianceProp
               Duty of Care &amp; Risk Mitigation Q&amp;A
             </h2>
             <p className="font-sans text-xs md:text-sm text-slate-600 font-light mt-3 max-w-lg mx-auto">
-              Clear verification of London ULEZ parameters, commercial insurance filings, and vendor registration.
+              Straight answers on ULEZ compliance, insurance documentation and vendor registration.
             </p>
           </div>
 
@@ -332,7 +332,7 @@ export function FleetCompliance({ onNavigateToHomeAndBook }: FleetComplianceProp
                   className="font-sans text-xs md:text-sm text-slate-600 leading-relaxed font-light"
                   itemProp="text"
                 >
-                  Our entire fleet consists exclusively of modern vehicles meeting strict Euro 6 diesel and environmental criteria. This ensures our executive minibuses and coaches possess permanent, unrestricted access to transit within all active London emission parameters without incurring clean air penalties.
+                  Our entire fleet consists exclusively of modern vehicles meeting strict Euro 6 diesel and environmental criteria. This means our executive minibuses and coaches travel throughout London's clean-air zones without incurring ULEZ penalties.
                 </div>
               </div>
             </div>

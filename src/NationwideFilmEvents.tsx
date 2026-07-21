@@ -41,9 +41,9 @@ export function NationwideFilmEvents({ onNavigateToHomeAndBook }: NationwideFilm
       btnClass: "bg-[#050C1A] hover:bg-slate-900 text-white",
       ctaText: "Book Production Transport",
       bullets: [
-        "Specialised production crew movement countrywide schedules mapped in advance",
-        "Dual-driver configurations designed for long distance coach charter parameters",
-        "Fully discrete unbranded vehicles providing smooth, unhindered filming logistics"
+        "Crew moves mapped in advance, wherever in the country the schedule goes",
+        "Dual-driver crews for long-distance runs, planned within legal driving hours",
+        "Discreet unbranded vehicles that keep filming logistics running smoothly"
       ],
       icon: <Film className="w-8 h-8 text-amber-500 mb-6" />
     },
@@ -314,7 +314,7 @@ export function NationwideFilmEvents({ onNavigateToHomeAndBook }: NationwideFilm
               Nationwide Logistics Q&amp;A
             </h2>
             <p className="font-sans text-xs md:text-sm text-slate-400 font-light mt-3 max-w-lg mx-auto">
-              Addressing driver tachograph management, route adjustments, and long-range co-ordinate tracking parameters.
+              Covering driver-hours rules, mid-tour route changes and how we manage long-distance jobs.
             </p>
           </div>
 
