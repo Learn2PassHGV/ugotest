@@ -2667,11 +2667,19 @@ function BespokeJourneyRunway({ onNavigate }: { onNavigate?: (page: PageType) =>
 function SiteHeader({ onNavigate }: { onNavigate?: (page: PageType) => void }) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [mobileCategoryOpen, setMobileCategoryOpen] = useState<'corporate' | 'private' | 'events' | null>(null);
-  const [mobileLocationsOpen, setMobileLocationsOpen] = useState(false);
-  const [mobileLocCategoryOpen, setMobileLocCategoryOpen] = useState<'regions' | 'bases' | null>(null);
+  const [mobilePanel, setMobilePanel] = useState<'root' | 'services' | 'locations'>('root');
   const closeTimerRef = useRef<number | null>(null);
+
+  // While the compact menu is open on phones, the page behind zooms back
+  // slightly and dims, so the menu reads as a small card floating above it.
+  useEffect(() => {
+    const main = document.querySelector('main') as HTMLElement | null;
+    if (!main) return;
+    main.style.transition = 'transform 420ms cubic-bezier(0.16, 1, 0.3, 1)';
+    main.style.transformOrigin = 'top center';
+    main.style.transform = isMobileMenuOpen && window.innerWidth < 1024 ? 'scale(0.96)' : '';
+    return () => { main.style.transform = ''; };
+  }, [isMobileMenuOpen]);
 
   // Lock page scroll while the mobile drawer is open (the drawer scrolls itself).
   useEffect(() => {
@@ -3068,8 +3076,8 @@ function SiteHeader({ onNavigate }: { onNavigate?: (page: PageType) => void }) {
           </a>
 
           {/* Hamburger Menu Toggle Button (Visible exclusively on mobile screens) */}
-          <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          <button
+            onClick={() => { setMobilePanel('root'); setIsMobileMenuOpen(!isMobileMenuOpen); }}
             className="lg:hidden shrink-0 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-stone-200 bg-white hover:bg-stone-50 text-slate-950 transition-colors duration-200 flex items-center justify-center text-slate-900 focus:outline-none"
             aria-label="Toggle Menu"
           >
@@ -3085,297 +3093,119 @@ function SiteHeader({ onNavigate }: { onNavigate?: (page: PageType) => void }) {
           </button>
         </div>
 
-        {/* Mobile Dropdown Flyout Drawer with clean height/opacity transition animations */}
+        {/* Mobile menu: a compact floating card, not a full-screen takeover.
+            Top level only at first; Services and Locations drill into their
+            own panel, so the sheet stays small. The page behind zooms back
+            and dims while it is open. */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div 
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="absolute top-full left-0 w-full bg-white border-b border-stone-200 shadow-2xl overflow-hidden lg:hidden flex flex-col px-6 py-6 space-y-6 z-30 max-h-[calc(100vh-80px)] overflow-y-auto overscroll-contain"
-            >
-              {/* Condensed Track */}
-              <div className="flex flex-col space-y-4">
-                <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-amber-600 border-b border-stone-100 pb-1">
-                  NAVIGATION
-                </span>
-
-                {/* OUR SERVICES Accordion Option */}
-                <div className="border-b border-stone-100 pb-3">
-                  <button 
-                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                    className="w-full flex items-center justify-between py-2 text-xs font-bold tracking-widest uppercase text-slate-700 hover:text-amber-600 transition-colors focus:outline-none"
-                  >
-                    <span>OUR SERVICES</span>
-                    <ChevronRight className={cn("w-3.5 h-3.5 text-amber-500 transition-transform duration-200", mobileServicesOpen && "rotate-90")} />
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {mobileServicesOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.25, ease: 'easeOut' }}
-                        className="pl-4 mt-2 space-y-4 overflow-hidden text-left"
-                      >
-                        {/* Category 1: Corporate Focus */}
-                        <div className="border-l-2 border-amber-500/20 pl-3">
+            <>
+              <motion.div
+                key="menu-backdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="fixed inset-0 bg-slate-950/45 backdrop-blur-[2px] lg:hidden z-20"
+              />
+              <motion.div
+                key="menu-sheet"
+                initial={{ opacity: 0, y: -10, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute top-full left-3 right-3 mt-2 bg-white rounded-2xl shadow-[0_30px_80px_rgba(2,6,15,0.35)] border border-stone-200 overflow-hidden lg:hidden z-30 max-h-[calc(100dvh-110px)] overflow-y-auto overscroll-contain"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {mobilePanel === 'root' && (
+                    <motion.div key="p-root" initial={{ opacity: 0, x: -14 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -14 }} transition={{ duration: 0.18 }}>
+                      <nav>
+                        {([
+                          { label: 'Our Services', panel: 'services' },
+                          { label: 'The Fleet', page: 'fleet' },
+                          { label: 'Locations', panel: 'locations' },
+                          { label: 'Corporate Accounts', page: 'corporate' },
+                          { label: 'About Us', page: 'about' },
+                          { label: 'Contact', page: 'contact' },
+                        ] as Array<{ label: string; panel?: 'services' | 'locations'; page?: PageType }>).map((item) => (
                           <button
-                            onClick={() => setMobileCategoryOpen(mobileCategoryOpen === 'corporate' ? null : 'corporate')}
-                            className="w-full flex items-center justify-between py-1 text-[11px] font-bold tracking-wider font-serif text-amber-500 hover:text-amber-600 transition-colors focus:outline-none"
+                            key={item.label}
+                            onClick={() => (item.panel ? setMobilePanel(item.panel) : handleNav(item.page as PageType))}
+                            className="w-full flex items-center justify-between px-5 py-3.5 text-[13px] font-semibold tracking-wide text-slate-800 active:bg-stone-50 transition-colors border-b border-stone-100 cursor-pointer"
                           >
-                            <span>01 / Corporate Frameworks</span>
-                            <ChevronRight className={cn("w-3 h-3 text-amber-500 transition-transform duration-200", mobileCategoryOpen === 'corporate' && "rotate-90")} />
+                            {item.label}
+                            {item.panel && <ChevronRight className="w-4 h-4 text-amber-500" />}
                           </button>
-                          <AnimatePresence initial={false}>
-                            {mobileCategoryOpen === 'corporate' && (
-                              <motion.div 
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="pl-3 mt-1.5 flex flex-col space-y-2 text-[10px] uppercase tracking-wider text-slate-500 font-mono"
-                              >
-                                <a href="/commercial-contracts" onClick={(e) => { e.preventDefault(); handleNav('commercial'); }} className="hover:text-amber-500 py-1 transition-colors">Commercial Contracts</a>
-                                <a href="/workplace-shuttles" onClick={(e) => { e.preventDefault(); handleNav('workplace-shuttles'); }} className="hover:text-amber-500 py-1 transition-colors">Workplace Shuttles</a>
-                                <a href="/corporate-roadshows" onClick={(e) => { e.preventDefault(); handleNav('corporate-roadshows'); }} className="hover:text-amber-500 py-1 transition-colors">Corporate Roadshows</a>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
+                        ))}
+                      </nav>
+                      <div className="px-4 py-3.5 bg-stone-50 flex items-center gap-2.5">
+                        <button
+                          onClick={() => { setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('ugo-book-event', { detail: {} })); }}
+                          className="flex-1 bg-amber-500 active:bg-amber-600 text-slate-950 font-bold tracking-[0.15em] text-[11px] uppercase py-3.5 rounded-xl transition-colors cursor-pointer"
+                        >
+                          Get a Quote
+                        </button>
+                        <a href="tel:08458333456" aria-label="Call the office" className="w-12 h-11 rounded-xl border border-stone-200 bg-white flex items-center justify-center shrink-0">
+                          <Phone className="w-4 h-4 text-amber-600" />
+                        </a>
+                        {WHATSAPP_NUMBER && (
+                          <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp the owners" className="w-12 h-11 rounded-xl border border-emerald-200 bg-emerald-50 flex items-center justify-center shrink-0">
+                            <MessageCircle className="w-4 h-4 text-emerald-600" />
+                          </a>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {mobilePanel === 'services' && (
+                    <motion.div key="p-services" initial={{ opacity: 0, x: 14 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 14 }} transition={{ duration: 0.18 }} className="pb-2">
+                      <button onClick={() => setMobilePanel('root')} className="w-full flex items-center gap-2 px-5 py-3.5 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 border-b border-stone-100 active:bg-stone-50 cursor-pointer">
+                        <ChevronLeft className="w-4 h-4 text-amber-500" /> Menu
+                      </button>
+                      {([
+                        { cap: 'Corporate', items: [['Commercial Contracts', 'commercial'], ['Workplace Shuttles', 'workplace-shuttles'], ['Corporate Roadshows', 'corporate-roadshows']] },
+                        { cap: 'Private', items: [['Private Coach Hire', 'private'], ['Luxury Minibus Hire', 'private-luxury'], ['Wedding Transport', 'wedding-transport']] },
+                        { cap: 'Events', items: [['Event Logistics', 'strategic-event-logistics'], ['Film & TV', 'film-tv-logistics'], ['Mass Transit Shuttles', 'mass-transit-shuttles']] },
+                      ] as Array<{ cap: string; items: Array<[string, PageType]> }>).map((g) => (
+                        <div key={g.cap}>
+                          <span className="block px-5 pt-3 pb-1 font-mono text-[9px] font-extrabold uppercase tracking-[0.25em] text-amber-600">{g.cap}</span>
+                          {g.items.map(([label, page]) => (
+                            <button key={label} onClick={() => handleNav(page)} className="w-full text-left px-5 py-2.5 text-[13px] font-medium text-slate-700 active:bg-stone-50 cursor-pointer">
+                              {label}
+                            </button>
+                          ))}
                         </div>
+                      ))}
+                    </motion.div>
+                  )}
 
-                        {/* Category 2: Private Focus */}
-                        <div className="border-l-2 border-amber-500/20 pl-3">
-                          <button
-                            onClick={() => setMobileCategoryOpen(mobileCategoryOpen === 'private' ? null : 'private')}
-                            className="w-full flex items-center justify-between py-1 text-[11px] font-bold tracking-wider font-serif text-amber-500 hover:text-amber-600 transition-colors focus:outline-none"
-                          >
-                            <span>02 / Private Luxury</span>
-                            <ChevronRight className={cn("w-3 h-3 text-amber-500 transition-transform duration-200", mobileCategoryOpen === 'private' && "rotate-90")} />
-                          </button>
-                          <AnimatePresence initial={false}>
-                            {mobileCategoryOpen === 'private' && (
-                              <motion.div 
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="pl-3 mt-1.5 flex flex-col space-y-2 text-[10px] uppercase tracking-wider text-slate-500 font-mono"
-                              >
-                                <a href="/private-coach-hire" onClick={(e) => { e.preventDefault(); handleNav('private'); }} className="hover:text-amber-500 py-1 transition-colors">Private Coach Hire</a>
-                                <a href="/luxury-minibus-hire" onClick={(e) => { e.preventDefault(); handleNav('private-luxury'); }} className="hover:text-amber-500 py-1 transition-colors">Luxury Minibus Hire</a>
-                                <a href="/wedding-transport" onClick={(e) => { e.preventDefault(); handleNav('wedding-transport'); }} className="hover:text-amber-500 py-1 transition-colors">Wedding Transport</a>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
+                  {mobilePanel === 'locations' && (
+                    <motion.div key="p-locations" initial={{ opacity: 0, x: 14 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 14 }} transition={{ duration: 0.18 }} className="pb-2">
+                      <button onClick={() => setMobilePanel('root')} className="w-full flex items-center gap-2 px-5 py-3.5 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 border-b border-stone-100 active:bg-stone-50 cursor-pointer">
+                        <ChevronLeft className="w-4 h-4 text-amber-500" /> Menu
+                      </button>
+                      {([
+                        { cap: 'Regions', items: [['Greater London', 'greater-london'], ['Home Counties', 'home-counties'], ['Airport Hubs', 'airport-hubs'], ['Film & Events', 'film-and-events']] },
+                        { cap: 'Local Bases', items: [['St Albans', 'st-albans'], ['Watford & Elstree', 'watford'], ['Hemel Hempstead', 'hemel'], ['Luton', 'luton']] },
+                      ] as Array<{ cap: string; items: Array<[string, PageType]> }>).map((g) => (
+                        <div key={g.cap}>
+                          <span className="block px-5 pt-3 pb-1 font-mono text-[9px] font-extrabold uppercase tracking-[0.25em] text-amber-600">{g.cap}</span>
+                          {g.items.map(([label, page]) => (
+                            <button key={label} onClick={() => handleNav(page)} className="w-full text-left px-5 py-2.5 text-[13px] font-medium text-slate-700 active:bg-stone-50 cursor-pointer">
+                              {label}
+                            </button>
+                          ))}
                         </div>
-
-                        {/* Category 3: Events Focus */}
-                        <div className="border-l-2 border-amber-500/20 pl-3">
-                          <button
-                            onClick={() => setMobileCategoryOpen(mobileCategoryOpen === 'events' ? null : 'events')}
-                            className="w-full flex items-center justify-between py-1 text-[11px] font-bold tracking-wider font-serif text-amber-500 hover:text-amber-600 transition-colors focus:outline-none"
-                          >
-                            <span>03 / Strategic Events</span>
-                            <ChevronRight className={cn("w-3 h-3 text-amber-500 transition-transform duration-200", mobileCategoryOpen === 'events' && "rotate-90")} />
-                          </button>
-                          <AnimatePresence initial={false}>
-                            {mobileCategoryOpen === 'events' && (
-                              <motion.div 
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="pl-3 mt-1.5 flex flex-col space-y-2 text-[10px] uppercase tracking-wider text-slate-500 font-mono"
-                              >
-                                <a href="/strategic-events" onClick={(e) => { e.preventDefault(); handleNav('strategic-event-logistics'); }} className="hover:text-amber-500 py-1 transition-colors">Strategic Event Logistics</a>
-                                <a href="/film-tv-logistics" onClick={(e) => { e.preventDefault(); handleNav('film-tv-logistics'); }} className="hover:text-amber-500 py-1 transition-colors">Film &amp; TV Logistics</a>
-                                <a href="/mass-transit-shuttles" onClick={(e) => { e.preventDefault(); handleNav('mass-transit-shuttles'); }} className="hover:text-amber-500 py-1 transition-colors">Mass Transit Shuttles</a>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                <a
-                  href="/the-fleet"
-                  onClick={(e) => { e.preventDefault(); handleNav('fleet'); }}
-                  className="text-xs font-semibold tracking-widest uppercase text-slate-700 hover:text-amber-600 transition-colors py-1"
-                >
-                  The Fleet
-                </a>
-                <a
-                  href="/corporate-accounts"
-                  onClick={(e) => { e.preventDefault(); handleNav('corporate'); }}
-                  className="text-xs font-semibold tracking-widest uppercase text-slate-700 hover:text-amber-600 transition-colors py-1"
-                >
-                  Corporate Accounts
-                </a>
-                {/* Mobile LOCATIONS Accordion */}
-                <div className="border-t border-stone-100/60 pt-2 flex flex-col">
-                  <button 
-                    onClick={() => setMobileLocationsOpen(!mobileLocationsOpen)}
-                    className="w-full flex items-center justify-between py-2 text-xs font-bold tracking-widest uppercase text-slate-700 hover:text-amber-600 transition-colors focus:outline-none"
-                  >
-                    <span>LOCATIONS</span>
-                    <ChevronRight className={cn("w-3.5 h-3.5 text-amber-500 transition-transform duration-200", mobileLocationsOpen && "rotate-90")} />
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {mobileLocationsOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.25, ease: 'easeOut' }}
-                        className="pl-4 mt-2 space-y-4 overflow-hidden text-left"
-                      >
-                        {/* Sub-Category 1: Core Transit Regions */}
-                        <div className="border-l-2 border-amber-500/20 pl-3">
-                          <button
-                            onClick={() => setMobileLocCategoryOpen(mobileLocCategoryOpen === 'regions' ? null : 'regions')}
-                            className="w-full flex items-center justify-between py-1 text-[11px] font-bold tracking-wider font-serif text-amber-500 hover:text-amber-600 transition-colors focus:outline-none"
-                          >
-                            <span>CORE TRANSIT REGIONS</span>
-                            <ChevronRight className={cn("w-3 h-3 text-amber-500 transition-transform duration-200", mobileLocCategoryOpen === 'regions' && "rotate-90")} />
-                          </button>
-                          <AnimatePresence initial={false}>
-                            {mobileLocCategoryOpen === 'regions' && (
-                              <motion.div 
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="pl-3 mt-1.5 flex flex-col space-y-2 text-[10px] uppercase tracking-wider text-slate-500 font-mono"
-                              >
-                                {[
-                                  { name: 'Greater London Central Coverage', path: '/locations/greater-london', page: 'greater-london' as const },
-                                  { name: 'The Home Counties Network', path: '/locations/home-counties', page: 'home-counties' as const },
-                                  { name: 'UK Airport Hub Connections', path: '/locations/airport-hubs', page: 'airport-hubs' as const },
-                                  { name: 'Nationwide Film & Event Transport', path: '/locations/film-and-events', page: 'film-and-events' as const }
-                                ].map((region) => (
-                                  <a 
-                                    key={region.name}
-                                    href={region.path}
-                                    onClick={(e) => { 
-                                      e.preventDefault(); 
-                                      if (region.page) {
-                                        handleNav(region.page);
-                                      } else {
-                                        handleNav('home'); 
-                                        setTimeout(() => { 
-                                          const mapSection = document.getElementById('regional-dispatch-network') || document.getElementById('locations');
-                                          if (mapSection) {
-                                            mapSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                          } else {
-                                            window.scrollTo({ top: document.body.scrollHeight / 2, behavior: 'smooth' }); 
-                                          }
-                                        }, 150); 
-                                      }
-                                    }} 
-                                    className="hover:text-amber-600 py-1 transition-colors"
-                                  >
-                                    {region.name}
-                                  </a>
-                                ))}
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-
-                        {/* Sub-Category 2: Local Operational Bases */}
-                        <div className="border-l-2 border-amber-500/20 pl-3">
-                          <button
-                            onClick={() => setMobileLocCategoryOpen(mobileLocCategoryOpen === 'bases' ? null : 'bases')}
-                            className="w-full flex items-center justify-between py-1 text-[11px] font-bold tracking-wider font-serif text-amber-500 hover:text-amber-600 transition-colors focus:outline-none"
-                          >
-                            <span>LOCAL OPERATIONAL BASES</span>
-                            <ChevronRight className={cn("w-3 h-3 text-amber-500 transition-transform duration-200", mobileLocCategoryOpen === 'bases' && "rotate-90")} />
-                          </button>
-                          <AnimatePresence initial={false}>
-                            {mobileLocCategoryOpen === 'bases' && (
-                              <motion.div 
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="pl-3 mt-1.5 flex flex-col space-y-2 text-[10px] uppercase tracking-wider text-slate-500 font-mono"
-                              >
-                                {[
-                                  { name: 'St Albans Operational Base', path: '/locations/st-albans', page: 'st-albans' as const },
-                                  { name: 'Watford & Elstree Hub', path: '/locations/watford', page: 'watford' as const },
-                                  { name: 'Hemel Hempstead Core', path: '/locations/hemel-hempstead', page: 'hemel' as const },
-                                  { name: 'Luton & Regional Access', path: '/locations/luton', page: 'luton' as const }
-                                ].map((base) => (
-                                  <a 
-                                    key={base.name}
-                                    href={base.path}
-                                    onClick={(e) => { 
-                                      e.preventDefault(); 
-                                      if (base.page) {
-                                        handleNav(base.page);
-                                      } else {
-                                        handleNav('home'); 
-                                        setTimeout(() => { 
-                                          const mapSection = document.getElementById('regional-dispatch-network') || document.getElementById('locations');
-                                          if (mapSection) {
-                                            mapSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                          } else {
-                                            window.scrollTo({ top: document.body.scrollHeight / 2, behavior: 'smooth' }); 
-                                          }
-                                        }, 150); 
-                                      }
-                                    }} 
-                                    className="hover:text-amber-600 py-1 transition-colors"
-                                  >
-                                    {base.name}
-                                  </a>
-                                ))}
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </div>
-
-              <div className="flex flex-col space-y-1 pt-2 border-t border-stone-100">
-                <a href="/about" onClick={(e) => { e.preventDefault(); handleNav('about'); }} className="text-xs font-semibold tracking-widest uppercase text-slate-700 hover:text-amber-600 transition-colors py-2">About Us</a>
-                <a href="/locations" onClick={(e) => { e.preventDefault(); handleNav('locations-index'); }} className="text-xs font-semibold tracking-widest uppercase text-slate-700 hover:text-amber-600 transition-colors py-2">Areas We Cover</a>
-                <a href="/contact" onClick={(e) => { e.preventDefault(); handleNav('contact'); }} className="text-xs font-semibold tracking-widest uppercase text-slate-700 hover:text-amber-600 transition-colors py-2">Contact</a>
-              </div>
-
-              {/* Call Details & Direct Actions inside Drawer */}
-              <div className="flex flex-col space-y-4 pt-4 border-t border-stone-100">
-                <a 
-                  href="tel:08458333456" 
-                  className="text-xs font-bold tracking-[0.15em] text-slate-900 hover:text-amber-600 transition-colors duration-200 flex items-center justify-center py-3 bg-stone-50 rounded-xl"
-                >
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse inline-block mr-2" />
-                  CONTACT OFFICE: 0845 8333 456
-                </a>
-
-                <a
-                  href="tel:07833226623"
-                  className="text-xs font-bold tracking-[0.15em] text-slate-900 hover:text-amber-600 transition-colors duration-200 flex items-center justify-center py-3 bg-amber-500/10 border border-amber-500/30 rounded-xl"
-                >
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block mr-2" />
-                  OWNERS DIRECT: 07833 226 623
-                </a>
-
-                <button 
-                  onClick={handleRequestQuoteClick}
-                  className="w-full border border-amber-500 hover:bg-amber-500 hover:text-slate-950 text-amber-600 font-bold tracking-[0.15em] text-xs uppercase py-4 rounded-xl transition-all duration-300 shadow-sm animate-pulse"
-                >
-                  Request a Smart Quote
-                </button>
-              </div>
-            </motion.div>
+                      ))}
+                      <button onClick={() => handleNav('locations-index')} className="w-full text-left px-5 py-3 mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-amber-600 border-t border-stone-100 flex items-center gap-2 cursor-pointer">
+                        View all 25+ areas we cover <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </div>
