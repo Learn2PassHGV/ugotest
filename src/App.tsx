@@ -2611,14 +2611,14 @@ function SiteHeader({ onNavigate }: { onNavigate?: (page: PageType) => void }) {
         }
       `}</style>
 
-      <div className="w-full py-6 px-8 flex flex-row items-center justify-between max-w-7xl mx-auto z-50 relative">
+      <div className="w-full py-3.5 px-4 sm:py-6 sm:px-8 gap-2 sm:gap-4 flex flex-row items-center justify-between max-w-7xl mx-auto z-50 relative">
         {/* Left Block: Logo Grid Decompressor (Fixing image_4b5c63.png Squash) */}
         <div 
           className="flex flex-col items-start space-y-1 cursor-pointer text-left select-none z-50"
           onClick={() => handleNav('home')}
         >
           <span className="font-serif text-2xl font-bold tracking-[0.05em] text-slate-950 leading-none">UGO</span>
-          <span className="mt-1 text-[9px] tracking-[0.25em] font-bold uppercase text-amber-600 font-mono leading-none block">
+          <span className="mt-1 text-[8px] tracking-[0.14em] sm:text-[9px] sm:tracking-[0.25em] font-bold uppercase text-amber-600 font-mono leading-none block whitespace-nowrap max-[359px]:hidden">
             COACH & MINIBUS HIRE
           </span>
         </div>
@@ -2908,11 +2908,11 @@ function SiteHeader({ onNavigate }: { onNavigate?: (page: PageType) => void }) {
         </div>
 
         {/* Right Node with Mobile Call Capsule (Always visible call capsule + toggler on mobile) */}
-        <div className="flex items-center space-x-4 z-50">
+        <div className="flex items-center space-x-2 sm:space-x-4 z-50 shrink-0">
           {/* Right Block: The Immersive 24/7 Call Beacon (Replaces CTA Quote Button) */}
           <a 
             href="tel:08458333456" 
-            className="bg-slate-950 text-white rounded-full py-2.5 px-4 sm:py-3.5 sm:px-6 flex items-center space-x-3 sm:space-x-4 shadow-[0_10px_30px_rgba(15,23,42,0.15)] border border-slate-800 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_15px_35px_rgba(245,158,11,0.2)] relative overflow-hidden group shrink-0"
+            className="bg-slate-950 text-white rounded-full py-2 px-3 sm:py-3.5 sm:px-6 flex items-center space-x-2 sm:space-x-4 shadow-[0_10px_30px_rgba(15,23,42,0.15)] border border-slate-800 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_15px_35px_rgba(245,158,11,0.2)] relative overflow-hidden group shrink-0"
           >
             {/* Ambient Shifting Light Perimeter */}
             <div className="absolute inset-0 shimmer-bg pointer-events-none opacity-40" />
@@ -2920,7 +2920,7 @@ function SiteHeader({ onNavigate }: { onNavigate?: (page: PageType) => void }) {
             <div className="absolute inset-0 border border-amber-500/15 rounded-full group-hover:border-amber-400/30 transition-colors duration-500 pointer-events-none" />
 
             {/* Double-Stage Sonar Pulse Indicator */}
-            <div className="relative flex items-center justify-center w-5 h-5 shrink-0">
+            <div className="relative flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 shrink-0">
               <span className="absolute w-2.5 h-2.5 rounded-full bg-emerald-400 animate-sonar2" />
               <span className="absolute w-2.5 h-2.5 rounded-full bg-emerald-400 animate-sonar1" />
               <span className="relative w-2.5 h-2.5 rounded-full bg-emerald-400" />
@@ -2928,7 +2928,7 @@ function SiteHeader({ onNavigate }: { onNavigate?: (page: PageType) => void }) {
 
             {/* The Telephone Coordinates Node */}
             <span className="flex flex-col leading-tight">
-              <span className="text-[10px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-slate-200">
+              <span className="text-[10px] sm:text-xs font-semibold tracking-[0.12em] sm:tracking-[0.18em] uppercase text-slate-200">
                 <span className="hidden md:inline">24/7 CONTACT: </span>
                 <span className="text-amber-400 group-hover:text-amber-300 transition-colors font-extrabold ml-1 font-mono">
                   0845 8333 456
@@ -2943,7 +2943,7 @@ function SiteHeader({ onNavigate }: { onNavigate?: (page: PageType) => void }) {
           {/* Hamburger Menu Toggle Button (Visible exclusively on mobile screens) */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2.5 rounded-xl border border-stone-200 bg-white hover:bg-stone-50 text-slate-950 transition-colors duration-200 flex items-center justify-center text-slate-900 focus:outline-none"
+            className="lg:hidden shrink-0 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-stone-200 bg-white hover:bg-stone-50 text-slate-950 transition-colors duration-200 flex items-center justify-center text-slate-900 focus:outline-none"
             aria-label="Toggle Menu"
           >
             {isMobileMenuOpen ? (
