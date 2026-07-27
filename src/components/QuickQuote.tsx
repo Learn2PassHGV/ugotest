@@ -1,7 +1,50 @@
 import React, { useMemo, useState } from 'react';
-import { ArrowRight, CheckCircle2, Phone } from 'lucide-react';
+import { ArrowRight, CheckCircle2, MessageCircle, Phone } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { sendLead } from '../lib/leads';
+
+/**
+ * WhatsApp Business number in international format without +, e.g. '447833226623'.
+ * Leave empty until Alan confirms the number: the WhatsApp buttons ship dark
+ * and appear automatically once this is filled in.
+ */
+export const WHATSAPP_NUMBER = '';
+
+/**
+ * StickyEnquireBar: slim always-visible enquiry bar at the bottom of the
+ * screen on phones and tablets. "Get a quote" jumps to the prefilled Smart
+ * Quote form from anywhere on the site.
+ */
+export function StickyEnquireBar({ page }: { page: string }) {
+  if (page === 'not-found') return null;
+  return (
+    <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-[#0A1428]/95 backdrop-blur-md border-t border-white/10 px-3 pt-2 pb-[calc(0.55rem+env(safe-area-inset-bottom))] flex gap-2">
+      <button
+        onClick={() => window.dispatchEvent(new CustomEvent('ugo-book-event', { detail: {} }))}
+        className="flex-1 bg-amber-500 active:bg-amber-600 text-slate-950 font-sans text-[11px] uppercase tracking-[0.14em] font-extrabold py-3 rounded-xl flex items-center justify-center gap-2 cursor-pointer"
+      >
+        Get a quote <ArrowRight className="w-3.5 h-3.5" />
+      </button>
+      <a
+        href="tel:08458333456"
+        className="flex-1 border border-white/25 text-white font-sans text-[11px] uppercase tracking-[0.14em] font-bold py-3 rounded-xl flex items-center justify-center gap-2"
+      >
+        <Phone className="w-3.5 h-3.5 text-amber-400" /> Call us
+      </a>
+      {WHATSAPP_NUMBER && (
+        <a
+          href={`https://wa.me/${WHATSAPP_NUMBER}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp us"
+          className="shrink-0 w-11 border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center"
+        >
+          <MessageCircle className="w-4.5 h-4.5" />
+        </a>
+      )}
+    </div>
+  );
+}
 
 /**
  * QuickQuoteStrip: a compact, prefilled, two-tap enquiry card rendered on

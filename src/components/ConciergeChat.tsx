@@ -100,7 +100,7 @@ export function ConciergeChat() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 bg-brass hover:bg-brass-dark text-white p-4 rounded-full shadow-2xl transition-all duration-300 z-50 flex items-center justify-center animate-bounce-slow"
+          className="fixed bottom-24 right-4 lg:bottom-6 lg:right-6 bg-brass hover:bg-brass-dark text-white p-4 rounded-full shadow-2xl transition-all duration-300 z-50 flex items-center justify-center animate-bounce-slow"
           aria-label="Open chat with the UGO booking assistant"
         >
           <MessageSquare className="w-6 h-6" />
