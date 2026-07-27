@@ -7,7 +7,7 @@ import { sendLead } from '../lib/leads';
  * email address. Captures the school-booker lead early, positions UGO as the
  * compliant, safe operator, and gives genuinely useful material in return.
  */
-export function SchoolTripPack() {
+export function SchoolTripPack({ variant = 'full' }: { variant?: 'full' | 'compact' }) {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [sending, setSending] = useState(false);
@@ -36,6 +36,50 @@ export function SchoolTripPack() {
       setError('That did not send. Please try again, or call 0845 8333 456 and we will email it over.');
     }
   };
+
+  if (variant === 'compact') {
+    return (
+      <section className="bg-white border-y border-stone-200 py-10">
+        <div className="max-w-6xl mx-auto px-6 lg:px-12">
+          <div className="bg-[#0A1428] rounded-2xl px-6 py-6 md:px-8 flex flex-col lg:flex-row lg:items-center gap-5">
+            <div className="flex items-start gap-3.5 flex-1">
+              <ClipboardCheck className="w-6 h-6 text-amber-500 shrink-0 mt-0.5" />
+              <div>
+                <h3 className="font-serif text-lg md:text-xl text-white leading-snug">Planning a school trip?</h3>
+                <p className="font-sans text-xs text-slate-400 font-light mt-1">
+                  Our free transport checklist for organisers: operator vetting, the countdown, and on-the-day essentials. DVSA registered, enhanced DBS drivers.
+                </p>
+              </div>
+            </div>
+            {done ? (
+              <p className="font-sans text-xs text-emerald-400 font-semibold flex items-center gap-2 shrink-0">
+                <CheckCircle2 className="w-4 h-4" /> Sent.{' '}
+                <a href="/downloads/ugo-school-trip-checklist.pdf" target="_blank" rel="noopener noreferrer" className="underline text-amber-400">Open the pack</a>
+              </p>
+            ) : (
+              <form onSubmit={submit} className="flex flex-col sm:flex-row gap-2.5 shrink-0 lg:w-[380px]">
+                <input
+                  type="email"
+                  placeholder="Email for the checklist"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setError(null); }}
+                  className="flex-1 bg-black/40 border border-slate-700 focus:border-amber-500 rounded-xl px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-slate-500"
+                />
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-sans text-[10px] uppercase tracking-[0.15em] font-extrabold py-3 px-5 rounded-xl transition-all duration-300 cursor-pointer disabled:opacity-60"
+                >
+                  {sending ? 'Sending…' : 'Get it'} <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </form>
+            )}
+          </div>
+          {error && <p className="text-xs text-red-600 font-sans mt-2 text-right">{error}</p>}
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-[#0A1428] py-16 md:py-20">

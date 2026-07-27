@@ -66,11 +66,9 @@ const GROUP_CHIPS = [8, 12, 16, 24, 33, 49, 60, 70];
 export function VehicleFinder() {
   const [group, setGroup] = useState(16);
   const [occasion, setOccasion] = useState(OCCASIONS[0]);
-  const [example, setExample] = useState(450);
 
   const vehicle = useMemo(() => VEHICLES.find((v) => v.seats >= group) || VEHICLES[VEHICLES.length - 1], [group]);
   const spare = vehicle.seats - group;
-  const perHead = (example / group).toFixed(2).replace(/\.00$/, '');
 
   const book = () => {
     window.dispatchEvent(
@@ -139,31 +137,15 @@ export function VehicleFinder() {
                 ))}
               </div>
 
-              {/* Per-head arithmetic: an adjustable example, never a promised price */}
+              {/* Value framing, deliberately without figures: prices only ever come from the owners */}
               <div className="bg-stone-50 border border-stone-200 rounded-2xl p-5">
-                <div className="flex items-baseline justify-between gap-3 mb-1.5">
-                  <span className="text-[10px] uppercase font-bold tracking-[0.18em] text-slate-500 font-mono">
-                    The per-person maths
-                  </span>
-                  <span className="font-serif text-lg text-slate-950">
-                    £{perHead} <span className="font-sans text-[11px] text-slate-500">each</span>
-                  </span>
-                </div>
-                <input
-                  type="range"
-                  min={250}
-                  max={950}
-                  step={25}
-                  value={example}
-                  onChange={(e) => setExample(Number(e.target.value))}
-                  className="w-full accent-amber-500 cursor-pointer"
-                  aria-label="Example total quote"
-                />
-                <p className="font-sans text-[11px] text-slate-500 mt-1.5 leading-relaxed">
-                  If the whole vehicle quoted at <strong className="text-slate-950">£{example}</strong>, that is{' '}
-                  <strong className="text-slate-950">£{perHead} per person</strong> for {group} of you, door to door,
-                  everyone together. Compare that with each person sorting trains, taxis and parking. Your real quote
-                  comes from Alan and Sasha, personally.
+                <span className="text-[10px] uppercase font-bold tracking-[0.18em] text-slate-500 font-mono block mb-1.5">
+                  Why one vehicle wins
+                </span>
+                <p className="font-sans text-xs text-slate-600 leading-relaxed">
+                  One price for the whole group, split however you like. Everyone travels together, door to door, and
+                  nobody is left sorting trains, taxis and parking on their own. Your price comes from Alan and Sasha
+                  personally, usually the same day.
                 </p>
               </div>
             </div>

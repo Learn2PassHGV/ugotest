@@ -8,7 +8,7 @@ import { sendLead } from '../lib/leads';
  * Leave empty until Alan confirms the number: the WhatsApp buttons ship dark
  * and appear automatically once this is filled in.
  */
-export const WHATSAPP_NUMBER = '';
+export const WHATSAPP_NUMBER = '447833226623';
 
 /**
  * StickyEnquireBar: slim always-visible enquiry bar at the bottom of the
@@ -175,14 +175,21 @@ export function QuickQuoteStrip({ page }: { page: string }) {
                 QUICK QUOTE · NO FORMS TO FIGHT
               </span>
               <h2 className="font-serif text-2xl md:text-3xl text-white leading-snug mb-4">
-                We have filled most of this in for you.
+                A price for your journey, in under a minute.
               </h2>
               <p className="font-sans text-slate-400 text-sm leading-relaxed font-light mb-6">
-                Check the journey matches yours, add a name and number, and it goes straight to Alan and Sasha. A rough idea is plenty. Replies usually the same day.
+                Where, roughly when, and a number to reach you on. It goes straight to Alan and Sasha, and replies usually come the same day. A rough idea is plenty.
               </p>
-              <a href="tel:08458333456" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-sans text-xs font-bold tracking-wider transition-colors">
-                <Phone className="w-3.5 h-3.5" /> Rather talk? 0845 8333 456
-              </a>
+              <div className="flex flex-col gap-2.5">
+                <a href="tel:08458333456" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-sans text-xs font-bold tracking-wider transition-colors">
+                  <Phone className="w-3.5 h-3.5" /> Rather talk? 0845 8333 456
+                </a>
+                {WHATSAPP_NUMBER && (
+                  <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-sans text-xs font-bold tracking-wider transition-colors">
+                    <MessageCircle className="w-3.5 h-3.5" /> WhatsApp the owners: 07833 226 623
+                  </a>
+                )}
+              </div>
             </div>
 
             {/* Right: the two-tap form */}
@@ -200,7 +207,7 @@ export function QuickQuoteStrip({ page }: { page: string }) {
               ) : (
                 <form onSubmit={submit} className="space-y-4">
                   <div>
-                    <label className="block text-[10px] uppercase font-bold tracking-[0.2em] text-slate-500 mb-1.5 font-mono">The journey (edit if different)</label>
+                    <label className="block text-[10px] uppercase font-bold tracking-[0.2em] text-slate-500 mb-1.5 font-mono">The journey</label>
                     <input
                       type="text"
                       value={journey}
