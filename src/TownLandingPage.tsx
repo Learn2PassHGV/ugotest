@@ -1,4 +1,5 @@
 import { QuickQuoteStrip } from './components/QuickQuote';
+import { SchoolTripPack } from './components/SchoolTripPack';
 import React from 'react';
 import { Phone, MapPin, CheckCircle2, ChevronRight, ShieldCheck, Users, Clock, EyeOff } from 'lucide-react';
 import type { Town } from './data/towns';
@@ -148,6 +149,8 @@ export function TownLandingPage({ town, onNavigate, onRequestQuote }: TownLandin
           </div>
         </div>
       </section>
+
+      <SchoolTripPack variant="compact" />
 
       {/* FAQs */}
       <section className="py-20 bg-white border-t border-stone-200">

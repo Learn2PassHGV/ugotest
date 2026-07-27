@@ -7,11 +7,11 @@ import { motion, AnimatePresence, useAnimation } from 'motion/react';
 import { 
   ArrowRight, Video, Shield, Navigation, Building2,
   Users, MoveRight, ChevronRight, Play, CheckCircle2, ChevronLeft,
-  BookOpen, PlaneTakeoff, Film, Phone, Mail, MapPin
+  BookOpen, PlaneTakeoff, Film, Phone, Mail, MapPin, MessageCircle
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { ConciergeChat } from './components/ConciergeChat';
-import { QuickQuoteStrip, StickyEnquireBar } from './components/QuickQuote';
+import { QuickQuoteStrip, StickyEnquireBar, WHATSAPP_NUMBER } from './components/QuickQuote';
 import { UpcomingEvents } from './components/UpcomingEvents';
 import { VehicleFinder } from './components/VehicleFinder';
 import { FleetImage } from './components/FleetImage';
@@ -675,13 +675,30 @@ function HeroAndQuoteArea() {
                           Takes under 60 seconds. A personal price for your exact journey, usually the same day.
                         </p>
                         <p className="text-slate-300 mt-3 max-w-lg mx-auto text-sm font-light leading-relaxed">
-                          We have started it for you with a common trip. Change anything that does not match, then send. A rough idea is plenty.
+                          Tell us roughly where, when and how many. A rough idea is plenty; the fine details are tidied up when we confirm.
                         </p>
                       </div>
 
                       <form className="space-y-8" onSubmit={handleSubmit}>
-                        {/* Interactive Step Selector */}
-                        <div className="w-full bg-white/5 p-1.5 rounded-2xl flex items-center justify-between mb-8 relative border border-white/5 font-mono text-[10px] tracking-wider">
+                        {/* Mobile: one step name + progress bar, not three pills fighting for width */}
+                        <div className="sm:hidden mb-8">
+                          <div className="flex items-baseline justify-between mb-2.5">
+                            <span className="font-mono text-[11px] tracking-[0.22em] font-bold text-amber-400 uppercase">
+                              {step === 1 ? 'The Journey' : step === 2 ? 'Your Group' : 'Send It'}
+                            </span>
+                            <span className="font-mono text-[9px] tracking-[0.15em] text-slate-500 uppercase">Step {step} of 3</span>
+                          </div>
+                          <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                            <motion.div
+                              className="h-full bg-gradient-to-r from-amber-500 to-amber-600 rounded-full shadow-[0_0_12px_rgba(245,158,11,0.5)]"
+                              animate={{ width: `${(step / 3) * 100}%` }}
+                              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Interactive Step Selector (desktop and tablet) */}
+                        <div className="w-full bg-white/5 p-1.5 rounded-2xl hidden sm:flex items-center justify-between mb-8 relative border border-white/5 font-mono text-[10px] tracking-wider">
                           {[
                             { num: 1, label: "01 JOURNEY" },
                             { num: 2, label: "02 YOUR GROUP" },
@@ -752,7 +769,7 @@ function HeroAndQuoteArea() {
                                   className="space-y-4"
                                 >
                                   <span className="block text-[10px] tracking-[0.2em] font-bold text-amber-400 uppercase font-mono">
-                                    Where is the journey? Edit if different
+                                    Where is the journey?
                                   </span>
                                   <div className="grid md:grid-cols-2 gap-4">
                                     {/* Capsule Block 1: Pickup */}
@@ -1057,7 +1074,7 @@ function HeroAndQuoteArea() {
                                   className="space-y-4"
                                 >
                                   <span className="block text-[10px] tracking-[0.2em] font-bold text-amber-400 uppercase font-mono">
-                                    Who is travelling? Tap to adjust
+                                    Who is travelling?
                                   </span>
                                   <div className="grid md:grid-cols-2 gap-4">
                                     {/* Capsule Block 5: Passengers */}
@@ -2199,6 +2216,20 @@ function PremiumFooterSection({ onNavigate }: { onNavigate?: (page: PageType) =>
                 Out-of-hours: 07833 226 623
               </a>
             </div>
+            {WHATSAPP_NUMBER && (
+              <div className="flex items-center gap-3">
+                <MessageCircle className="w-4 h-4 text-amber-500 shrink-0" />
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-slate-300 hover:text-amber-400 transition-colors duration-200"
+                  id="footer-whatsapp"
+                >
+                  WhatsApp the owners: 07833 226 623
+                </a>
+              </div>
+            )}
             <div className="flex items-start gap-3">
               <MapPin className="w-4 h-4 text-amber-500 shrink-0 mt-1" />
               <p className="text-xs text-slate-300 leading-relaxed font-light" id="footer-address">
@@ -4954,8 +4985,8 @@ export default function App() {
         {currentPage === 'home' && (
           <>
             <HeroAndQuoteArea />
-            <UpcomingEvents />
             <ElitePedigree />
+            <UpcomingEvents />
             <LogisticsArchitectureSection onNavigate={(page) => setCurrentPage(page)} />
             <UGOStandardsGrid />
             <TheDirectRoute />

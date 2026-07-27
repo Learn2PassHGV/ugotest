@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SchoolTripPack } from './components/SchoolTripPack';
 import { 
   ShieldCheck, 
   ChevronDown, 
@@ -407,6 +408,8 @@ export function FleetCompliance({ onNavigateToHomeAndBook }: FleetComplianceProp
           </button>
         </div>
       </section>
+
+      <SchoolTripPack />
     </div>
   );
 }
