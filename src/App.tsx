@@ -89,6 +89,9 @@ function HeroAndQuoteArea() {
     };
   });
   const [returnInfo, setReturnInfo] = useState({ enabled: false, date: "", time: "" });
+  // Phones: the timing block starts as a one-line prefilled summary and only
+  // expands when tapped, so step one reads as almost nothing to do.
+  const [timingOpen, setTimingOpen] = useState(false);
   const [isDesktopViewport, setIsDesktopViewport] = useState(false);
 
   useEffect(() => {
@@ -472,13 +475,27 @@ function HeroAndQuoteArea() {
                 objectFit: 'cover',
                 objectPosition: 'center bottom',
                 width: '100%',
-                height: '100%',
+                height: '100svh',
                 position: 'absolute',
                 top: 0,
                 left: 0,
                 zIndex: -1,
-                transform: 'scale(1.05) translateY(2%)',
-                transformOrigin: 'bottom center'
+                transform: isExpanded ? 'scale(1) translateY(0)' : 'scale(1.06) translateY(2%)',
+                transformOrigin: 'center center',
+                transition: 'transform 900ms cubic-bezier(0.16, 1, 0.3, 1)'
+              }}
+            />
+          )}
+          {/* Phones: the image stops after one screen and blends into solid navy,
+              so the growing form never stretches the picture beneath it. */}
+          {!isDesktopViewport && (
+            <div
+              className="absolute left-0 right-0 pointer-events-none"
+              style={{
+                top: 'calc(100svh - 180px)',
+                height: '180px',
+                background: 'linear-gradient(to bottom, rgba(10,20,36,0) 0%, #0A1424 96%)',
+                zIndex: -1
               }}
             />
           )}
@@ -637,7 +654,7 @@ function HeroAndQuoteArea() {
             <div className="absolute inset-[-400%] pointer-events-none z-0 bg-[conic-gradient(from_0deg,#f59e0b_0deg,transparent_110deg,#ffffff_180deg,transparent_290deg,#f59e0b_360deg)] animate-[spin_10s_linear_infinite] opacity-80" />
 
             {/* Perfect contrast, backdrop blur solidifying background legibility */}
-            <div className="backdrop-blur-3xl bg-slate-950/95 rounded-[34.5px] p-8 md:p-12 relative z-10 w-full h-full">
+            <div className="backdrop-blur-3xl bg-slate-950/95 rounded-[34.5px] p-5 sm:p-8 md:p-12 relative z-10 w-full h-full">
               {/* Active Mouse Tracker Glow */}
               <div 
                 id="mouse-gradient-glow"
@@ -664,7 +681,7 @@ function HeroAndQuoteArea() {
                       exit={{ opacity: 0 }}
                     >
                       {/* Header Cluster */}
-                      <div className="text-center mb-10">
+                      <div className="text-center mb-6 sm:mb-10">
                         <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-amber-400 mb-3 block">
                           FAST, FREE QUOTES
                         </span>
@@ -679,7 +696,7 @@ function HeroAndQuoteArea() {
                         </p>
                       </div>
 
-                      <form className="space-y-8" onSubmit={handleSubmit}>
+                      <form className="space-y-5 sm:space-y-8" onSubmit={handleSubmit}>
                         {/* Mobile: one step name + progress bar, not three pills fighting for width */}
                         <div className="sm:hidden mb-8">
                           <div className="flex items-baseline justify-between mb-2.5">
@@ -760,7 +777,7 @@ function HeroAndQuoteArea() {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -20 }}
                                 transition={{ duration: 0.3 }}
-                                className="space-y-6"
+                                className="space-y-4 sm:space-y-6"
                               >
                                 <motion.div 
                                   initial={{ opacity: 0, y: 15 }}
@@ -928,7 +945,21 @@ function HeroAndQuoteArea() {
                                   <span className="block text-[10px] tracking-[0.2em] font-bold text-amber-400 uppercase font-mono">
                                     When are you travelling?
                                   </span>
-                                  <div className="grid md:grid-cols-2 gap-4">
+                                  {/* Phones: prefilled one-line summary until tapped */}
+                                  {!timingOpen && (
+                                    <button
+                                      type="button"
+                                      onClick={() => setTimingOpen(true)}
+                                      className="sm:hidden w-full flex items-center justify-between bg-black/50 border border-slate-800 rounded-2xl px-4 py-3.5 text-left cursor-pointer"
+                                    >
+                                      <span className="text-white text-sm font-medium">
+                                        {(() => { try { return new Date(formData.date + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }); } catch { return formData.date; } })()}
+                                        {formData.time ? ` · ${formData.time}` : ' · Time flexible'}
+                                      </span>
+                                      <span className="text-amber-400 text-[10px] font-bold uppercase tracking-[0.15em] shrink-0 ml-3">Change</span>
+                                    </button>
+                                  )}
+                                  <div className={cn(timingOpen ? "grid" : "hidden sm:grid", "md:grid-cols-2 gap-4")}>
                                     {/* Capsule Block 3: Date */}
                                     <div className={cn(
                                       "bg-black/50 border rounded-2xl p-4 relative overflow-hidden transition-all duration-300 flex flex-col justify-center",
@@ -1041,7 +1072,7 @@ function HeroAndQuoteArea() {
                                   initial={{ opacity: 0, y: 15 }}
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ duration: 0.4, delay: 0.21, ease: [0.16, 1, 0.3, 1] }}
-                                  className="pt-6 flex flex-col items-end gap-2"
+                                  className="pt-1 sm:pt-6 flex flex-col items-end gap-2"
                                 >
                                   <button 
                                     type="button"
@@ -1065,7 +1096,7 @@ function HeroAndQuoteArea() {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -20 }}
                                 transition={{ duration: 0.3 }}
-                                className="space-y-6"
+                                className="space-y-4 sm:space-y-6"
                               >
                                 <motion.div 
                                   initial={{ opacity: 0, y: 15 }}
@@ -1221,7 +1252,7 @@ function HeroAndQuoteArea() {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -20 }}
                                 transition={{ duration: 0.3 }}
-                                className="space-y-6"
+                                className="space-y-4 sm:space-y-6"
                               >
                                 <motion.div 
                                   initial={{ opacity: 0, y: 15 }}
