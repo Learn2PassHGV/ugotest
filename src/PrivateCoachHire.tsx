@@ -152,6 +152,8 @@ export function PrivateCoachHire({ onNavigateToHomeAndBook }: PrivateCoachHirePr
         </div>
       </section>
 
+      <UpcomingEvents />
+
       {/* 2. THE 6-CARD CAPABILITY GRID SECTION */}
       <section className="py-24 bg-[#FAFAFC] border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-6">
@@ -455,7 +457,6 @@ export function PrivateCoachHire({ onNavigateToHomeAndBook }: PrivateCoachHirePr
         </div>
       </section>
 
-      <UpcomingEvents />
     </div>
   );
 }

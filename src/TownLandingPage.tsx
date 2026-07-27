@@ -1,3 +1,4 @@
+import { QuickQuoteStrip } from './components/QuickQuote';
 import React from 'react';
 import { Phone, MapPin, CheckCircle2, ChevronRight, ShieldCheck, Users, Clock, EyeOff } from 'lucide-react';
 import type { Town } from './data/towns';
@@ -104,6 +105,8 @@ export function TownLandingPage({ town, onNavigate, onRequestQuote }: TownLandin
           ))}
         </div>
       </section>
+
+      <QuickQuoteStrip page={`town-${town.slug}`} />
 
       {/* Local angle + journeys */}
       <section className="py-20 md:py-24 bg-stone-50">

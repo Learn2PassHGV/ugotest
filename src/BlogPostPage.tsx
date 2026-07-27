@@ -1,3 +1,4 @@
+import { SchoolTripPack } from './components/SchoolTripPack';
 import React from 'react';
 import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight, Clock, Phone } from 'lucide-react';
 import type { Post } from './data/posts';
@@ -140,6 +141,8 @@ export function BlogPostPage({ post, onNavigate, onRequestQuote }: BlogPostPageP
           )}
         </div>
       </article>
+
+      {post.slug === 'school-trip-transport-checklist' && <SchoolTripPack />}
     </div>
   );
 }

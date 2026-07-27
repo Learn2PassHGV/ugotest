@@ -143,6 +143,8 @@ export function StrategicEvents({ onNavigateToHomeAndBook }: StrategicEventsProp
         </div>
       </section>
 
+      <UpcomingEvents />
+
       {/* 2. Semantic AIEO Density Block (Light Alternating Rhythm) */}
       <section className="bg-white text-slate-900 py-20 md:py-24 border-y border-slate-200 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[350px] h-[350px] bg-slate-50 rounded-full blur-3xl pointer-events-none z-0" />
@@ -441,7 +443,6 @@ export function StrategicEvents({ onNavigateToHomeAndBook }: StrategicEventsProp
         </div>
       </section>
 
-      <UpcomingEvents />
     </div>
   );
 }

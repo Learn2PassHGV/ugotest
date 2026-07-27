@@ -1,3 +1,4 @@
+import { AirportGuide } from './components/AirportGuide';
 import React, { useState, useEffect } from 'react';
 import { 
   Plane, 
@@ -149,6 +150,8 @@ export function AirportHubs({ onNavigateToHomeAndBook }: AirportHubsProps) {
           </div>
         </div>
       </section>
+
+      <AirportGuide />
 
       {/* 2. FLIGHT TRACKING PANEL (Dedicated dark navy background) */}
       <section className="bg-[#050C1A] text-white py-12 border-y border-white/5 relative z-10">

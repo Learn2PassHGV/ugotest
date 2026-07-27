@@ -11,7 +11,10 @@ import {
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { ConciergeChat } from './components/ConciergeChat';
-import { QuickQuoteStrip } from './components/QuickQuote';
+import { QuickQuoteStrip, StickyEnquireBar } from './components/QuickQuote';
+import { UpcomingEvents } from './components/UpcomingEvents';
+import { VehicleFinder } from './components/VehicleFinder';
+import { FleetImage } from './components/FleetImage';
 import { sendLead, containsContactDetails, fetchChatReply } from './lib/leads';
 import { getTownBySlug } from './data/towns';
 import { getPostBySlug } from './data/posts';
@@ -3892,11 +3895,12 @@ function FleetShowroom() {
                 {/* High-Fidelity Vehicle Image Showcase */}
                 <div className="overflow-hidden aspect-[16/10] relative bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center justify-center mb-6">
                   <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10" />
-                  <img 
-                    src={item.imgSrc} loading="lazy" decoding="async" width={1536} height={1024} 
-                    alt={item.imgAlt} 
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                  <FleetImage
+                    slot={item.capacityValue === "16" ? "fleet-minibus-16" : item.capacityValue === "35" ? "fleet-midi-35" : "fleet-coach-53"}
+                    fallbackSrc={item.imgSrc}
+                    alt={item.imgAlt}
+                    imgClassName="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                    className="w-full h-full"
                   />
                 </div>
 
@@ -4950,11 +4954,13 @@ export default function App() {
         {currentPage === 'home' && (
           <>
             <HeroAndQuoteArea />
+            <UpcomingEvents />
             <ElitePedigree />
             <LogisticsArchitectureSection onNavigate={(page) => setCurrentPage(page)} />
             <UGOStandardsGrid />
             <TheDirectRoute />
             <FleetShowroom />
+            <VehicleFinder />
             <BespokeJourneyRunway onNavigate={(page) => setCurrentPage(page)} />
             <LiveAIConciergeHub />
             <InstitutionalTenderBanner />
@@ -5269,10 +5275,15 @@ export default function App() {
 
       <ConciergeChat />
 
-      {/* Low-friction quote card on every content page (home has the full form) */}
-      <QuickQuoteStrip page={currentPage} />
+      {/* Low-friction quote card on every content page (home has the full form;
+          town pages embed their own copy higher up the page) */}
+      {!currentPage.startsWith('town-') && <QuickQuoteStrip page={currentPage} />}
 
       <PremiumFooterSection onNavigate={(page) => setCurrentPage(page)} />
+
+      {/* Always-visible enquiry bar on phones and tablets, plus clearance for it */}
+      <div className="h-16 lg:hidden" aria-hidden="true" />
+      <StickyEnquireBar page={currentPage} />
     </div>
   );
 }
