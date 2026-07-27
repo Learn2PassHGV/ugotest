@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Trophy, 
-  Music, 
+import { UpcomingEvents } from './components/UpcomingEvents';
+import {
+  Trophy,
+  Music,
   Sparkles, 
   GlassWater, 
   Plane, 
@@ -453,6 +454,8 @@ export function PrivateCoachHire({ onNavigateToHomeAndBook }: PrivateCoachHirePr
           </button>
         </div>
       </section>
+
+      <UpcomingEvents />
     </div>
   );
 }

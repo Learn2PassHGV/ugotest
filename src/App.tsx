@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { ConciergeChat } from './components/ConciergeChat';
+import { QuickQuoteStrip } from './components/QuickQuote';
 import { sendLead, containsContactDetails, fetchChatReply } from './lib/leads';
 import { getTownBySlug } from './data/towns';
 import { getPostBySlug } from './data/posts';
@@ -67,17 +68,35 @@ function HeroAndQuoteArea() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [formData, setFormData] = useState({
-    pickup: "",
-    destination: "",
-    date: "",
-    time: "",
-    passengers: "",
-    journeyType: "Corporate Logistics",
-    name: "",
-    email: "",
-    phone: ""
+  const [formData, setFormData] = useState(() => {
+    // Prefilled with the most common journey so the form arrives feeling
+    // nearly done: visitors edit what differs instead of starting cold.
+    const d = new Date();
+    d.setDate(d.getDate() + (((6 - d.getDay() + 7) % 7) || 7)); // next Saturday
+    return {
+      pickup: "St Albans / Hertfordshire",
+      destination: "Central London",
+      date: d.toISOString().slice(0, 10),
+      time: "",
+      passengers: "16",
+      journeyType: "Private Event",
+      name: "",
+      email: "",
+      phone: ""
+    };
   });
+  const [returnInfo, setReturnInfo] = useState({ enabled: false, date: "", time: "" });
+  const [isDesktopViewport, setIsDesktopViewport] = useState(false);
+
+  useEffect(() => {
+    // Phones get a still hero image instead of the background video:
+    // the video is barely visible at small sizes and costs real load time.
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const apply = () => setIsDesktopViewport(mq.matches);
+    apply();
+    mq.addEventListener('change', apply);
+    return () => mq.removeEventListener('change', apply);
+  }, []);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [glowPos, setGlowPos] = useState({ x: 0, y: 0, opacity: 0 });
@@ -121,8 +140,8 @@ function HeroAndQuoteArea() {
       if (!formData.destination) {
         newErrors.destination = "Please let us know your destination point so we can map the route accurately.";
       }
-      if (!formData.date || !formData.time) {
-        newErrors.timing = "Please select your departure timing so we can verify fleet availability.";
+      if (!formData.date) {
+        newErrors.timing = "A rough date is all we need. The exact time can be settled later.";
       }
       if (Object.keys(newErrors).length > 0) {
         setErrors(newErrors);
@@ -167,6 +186,9 @@ function HeroAndQuoteArea() {
       time: formData.time,
       passengers: formData.passengers,
       journeyType: formData.journeyType,
+      message: returnInfo.enabled
+        ? `Return journey requested${returnInfo.date ? ` on ${returnInfo.date}` : ''}${returnInfo.time ? `, ${returnInfo.time.toLowerCase()}` : ''}.`
+        : undefined,
     });
     setIsSending(false);
     if (result.ok) {
@@ -193,13 +215,16 @@ function HeroAndQuoteArea() {
 
   useEffect(() => {
     const handlePreSelect = (e: Event) => {
-      const customEvent = e as CustomEvent<{ passengers?: string; journeyType?: string; pickup?: string }>;
+      const customEvent = e as CustomEvent<{ passengers?: string; journeyType?: string; pickup?: string; destination?: string; date?: string; time?: string }>;
       if (customEvent.detail) {
-        setFormData(prev => ({ 
-          ...prev, 
+        setFormData(prev => ({
+          ...prev,
           ...(customEvent.detail.passengers ? { passengers: customEvent.detail.passengers } : {}),
           ...(customEvent.detail.journeyType ? { journeyType: customEvent.detail.journeyType } : {}),
-          ...(customEvent.detail.pickup ? { pickup: customEvent.detail.pickup } : {})
+          ...(customEvent.detail.pickup ? { pickup: customEvent.detail.pickup } : {}),
+          ...(customEvent.detail.destination ? { destination: customEvent.detail.destination } : {}),
+          ...(customEvent.detail.date ? { date: customEvent.detail.date } : {}),
+          ...(customEvent.detail.time ? { time: customEvent.detail.time } : {})
         }));
         setIsExpanded(true);
         if (customEvent.detail.journeyType) {
@@ -413,28 +438,47 @@ function HeroAndQuoteArea() {
         }}
       >
         <div className="absolute inset-0 bg-royal-navy z-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster="/media/hero-poster.webp"
-            style={{
-              objectFit: 'cover',
-              objectPosition: 'center bottom',
-              width: '100%',
-              height: '100%',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              zIndex: -1,
-              transform: 'scale(1.05) translateY(2%)',
-              transformOrigin: 'bottom center',
-              transition: 'object-position 700ms ease-in-out, transform 700ms ease-in-out'
-            }}
-            src="/media/hero-1280.mp4"
-          />
+          {isDesktopViewport ? (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster="/media/hero-poster.webp"
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center bottom',
+                width: '100%',
+                height: '100%',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: -1,
+                transform: 'scale(1.05) translateY(2%)',
+                transformOrigin: 'bottom center',
+                transition: 'object-position 700ms ease-in-out, transform 700ms ease-in-out'
+              }}
+              src="/media/hero-1280.mp4"
+            />
+          ) : (
+            <img
+              src="/media/hero-poster.webp"
+              alt="UGO executive minibus travelling through the countryside"
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center bottom',
+                width: '100%',
+                height: '100%',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: -1,
+                transform: 'scale(1.05) translateY(2%)',
+                transformOrigin: 'bottom center'
+              }}
+            />
+          )}
           {/* Cinematic Navy Color Wash (Subtle 10% Opacity) */}
           <div 
             className="absolute inset-0 bg-[#030F26] pointer-events-none" 
@@ -628,7 +672,7 @@ function HeroAndQuoteArea() {
                           Takes under 60 seconds. A personal price for your exact journey, usually the same day.
                         </p>
                         <p className="text-slate-300 mt-3 max-w-lg mx-auto text-sm font-light leading-relaxed">
-                          Select your journey details below to receive a clear quote tailored to your group needs.
+                          We have started it for you with a common trip. Change anything that does not match, then send. A rough idea is plenty.
                         </p>
                       </div>
 
@@ -637,8 +681,8 @@ function HeroAndQuoteArea() {
                         <div className="w-full bg-white/5 p-1.5 rounded-2xl flex items-center justify-between mb-8 relative border border-white/5 font-mono text-[10px] tracking-wider">
                           {[
                             { num: 1, label: "01 JOURNEY" },
-                            { num: 2, label: "02 SEATING" },
-                            { num: 3, label: "03 CONTACT" }
+                            { num: 2, label: "02 YOUR GROUP" },
+                            { num: 3, label: "03 SEND" }
                           ].map((t) => {
                             const isActive = step === t.num;
                             return (
@@ -651,7 +695,7 @@ function HeroAndQuoteArea() {
                                   if (t.num > 1) {
                                     if (!formData.pickup) newErrors.pickup = "Please let us know your pickup point so we can map the route accurately.";
                                     if (!formData.destination) newErrors.destination = "Please let us know your destination point so we can map the route accurately.";
-                                    if (!formData.date || !formData.time) newErrors.timing = "Please select your departure timing so we can verify fleet availability.";
+                                    if (!formData.date) newErrors.timing = "A rough date is all we need. The exact time can be settled later.";
                                     if (Object.keys(newErrors).length > 0) {
                                       setErrors(newErrors);
                                       setStep(1);
@@ -705,7 +749,7 @@ function HeroAndQuoteArea() {
                                   className="space-y-4"
                                 >
                                   <span className="block text-[10px] tracking-[0.2em] font-bold text-amber-400 uppercase font-mono">
-                                    Pickup & Destination Details
+                                    Where is the journey? Edit if different
                                   </span>
                                   <div className="grid md:grid-cols-2 gap-4">
                                     {/* Capsule Block 1: Pickup */}
@@ -862,7 +906,7 @@ function HeroAndQuoteArea() {
                                   className="space-y-4"
                                 >
                                   <span className="block text-[10px] tracking-[0.2em] font-bold text-amber-400 uppercase font-mono">
-                                    Departure Timing Details
+                                    When are you travelling?
                                   </span>
                                   <div className="grid md:grid-cols-2 gap-4">
                                     {/* Capsule Block 3: Date */}
@@ -900,42 +944,71 @@ function HeroAndQuoteArea() {
                                       </AnimatePresence>
                                     </div>
 
-                                    {/* Capsule Block 4: Time */}
-                                    <div className={cn(
-                                      "bg-black/50 border rounded-2xl p-4 relative overflow-hidden transition-all duration-300 flex flex-col justify-center",
-                                      activeFocus === 'time' ? "border-amber-500/50 shadow-[0_0_25px_rgba(245,158,11,0.15)]" : "border-slate-800 hover:border-slate-700"
-                                    )}>
-                                      <label htmlFor="departure-time-input" className="text-[10px] uppercase font-bold tracking-[0.25em] text-amber-400 mb-1 font-mono">Departure Time</label>
-                                      <input 
-                                        id="departure-time-input"
-                                        type="time" 
-                                        value={formData.time}
-                                        onFocus={() => setActiveFocus('time')}
-                                        onBlur={() => setActiveFocus(null)}
-                                        onChange={(e) => {
-                                          setFormData({...formData, time: e.target.value});
-                                          setErrors(prev => {
-                                            const copy = { ...prev };
-                                            delete copy.timing;
-                                            return copy;
-                                          });
-                                        }}
-                                        className="text-white font-medium text-sm w-full bg-transparent border-none outline-none focus:ring-0 py-1 scheme-dark cursor-pointer" 
-                                        required
-                                      />
-                                      <AnimatePresence>
-                                        {activeFocus === 'time' && (
-                                          <motion.div 
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            exit={{ opacity: 0 }}
-                                            className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_120%,rgba(245,158,11,0.08),transparent_60%)]"
-                                          />
-                                        )}
-                                      </AnimatePresence>
+                                    {/* Capsule Block 4: rough time of day, optional one-tap chips */}
+                                    <div className="bg-black/50 border border-slate-800 hover:border-slate-700 rounded-2xl p-4 relative transition-all duration-300 flex flex-col justify-center">
+                                      <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-amber-400 mb-2 font-mono">Time of Day, Roughly</span>
+                                      <div className="flex flex-wrap gap-2">
+                                        {['Morning', 'Afternoon', 'Evening'].map((t) => (
+                                          <button
+                                            key={t}
+                                            type="button"
+                                            onClick={() => setFormData(prev => ({ ...prev, time: prev.time === t ? '' : t }))}
+                                            className={cn(
+                                              "px-3.5 py-2 rounded-full text-[11px] font-semibold tracking-wide border transition-all duration-200 cursor-pointer",
+                                              formData.time === t
+                                                ? "bg-amber-500 text-slate-950 border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.3)]"
+                                                : "bg-transparent text-slate-300 border-slate-700 hover:border-amber-500/50 hover:text-white"
+                                            )}
+                                          >
+                                            {t}
+                                          </button>
+                                        ))}
+                                      </div>
+                                      <p className="text-[9px] text-slate-500 mt-2 font-sans">Optional. Exact times are settled when we confirm your quote.</p>
                                     </div>
                                   </div>
                                 </motion.div>
+
+                                {/* Progressive return journey: appears only once an outbound date exists */}
+                                {formData.date && (
+                                  <div className="pt-1">
+                                    {!returnInfo.enabled ? (
+                                      <button
+                                        type="button"
+                                        onClick={() => setReturnInfo(r => ({ ...r, enabled: true }))}
+                                        className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-xs font-semibold tracking-wide transition-colors cursor-pointer"
+                                      >
+                                        <ArrowRight className="w-3.5 h-3.5" /> Add a return journey (optional)
+                                      </button>
+                                    ) : (
+                                      <div className="bg-black/40 border border-slate-800 rounded-2xl p-4 space-y-3">
+                                        <div className="flex items-center justify-between">
+                                          <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-amber-400 font-mono">Return Journey</span>
+                                          <button type="button" onClick={() => setReturnInfo({ enabled: false, date: "", time: "" })} className="text-[10px] text-slate-500 hover:text-slate-300 uppercase tracking-wider font-semibold cursor-pointer">Remove</button>
+                                        </div>
+                                        <div className="grid md:grid-cols-2 gap-3">
+                                          <input
+                                            type="date"
+                                            value={returnInfo.date}
+                                            min={formData.date}
+                                            onChange={(e) => setReturnInfo(r => ({ ...r, date: e.target.value }))}
+                                            className="bg-black/50 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-sm outline-none focus:border-amber-500/50 scheme-dark cursor-pointer w-full"
+                                          />
+                                          <div className="flex flex-wrap items-center gap-2">
+                                            {['Morning', 'Afternoon', 'Evening'].map((t) => (
+                                              <button key={t} type="button" onClick={() => setReturnInfo(r => ({ ...r, time: r.time === t ? '' : t }))}
+                                                className={cn(
+                                                  "px-3 py-1.5 rounded-full text-[10px] font-semibold tracking-wide border transition-all duration-200 cursor-pointer",
+                                                  returnInfo.time === t ? "bg-amber-500 text-slate-950 border-amber-400" : "bg-transparent text-slate-300 border-slate-700 hover:border-amber-500/50 hover:text-white"
+                                                )}>{t}</button>
+                                            ))}
+                                          </div>
+                                        </div>
+                                        <p className="text-[9px] text-slate-500 font-sans">Coming back the same night? Just pick the same date.</p>
+                                      </div>
+                                    )}
+                                  </div>
+                                )}
 
                                 {errors.timing && (
                                   <div className="bg-red-500/10 border border-red-500/15 rounded-2xl p-4 text-xs text-red-300 font-sans font-medium flex items-center gap-3">
@@ -955,7 +1028,7 @@ function HeroAndQuoteArea() {
                                     onClick={handleNext}
                                     className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 bg-[size:200%_auto] text-slate-950 font-bold tracking-[0.2em] text-xs uppercase py-4 px-10 rounded-2xl shadow-[0_20px_40px_rgba(245,158,11,0.25)] transition-all duration-500 hover:bg-right hover:scale-[1.02] hover:shadow-[0_25px_50px_rgba(245,158,11,0.45)] active:scale-[0.98] flex items-center justify-center space-x-3 cursor-pointer btn-premium-sheen"
                                   >
-                                    <span>Next: Capacity</span>
+                                    <span>Looks right, next</span>
                                     <ArrowRight className="w-4 h-4 shrink-0" />
                                   </button>
                                   <p className="text-[10px] text-slate-400 font-sans tracking-wide">
@@ -981,7 +1054,7 @@ function HeroAndQuoteArea() {
                                   className="space-y-4"
                                 >
                                   <span className="block text-[10px] tracking-[0.2em] font-bold text-amber-400 uppercase font-mono">
-                                    Group Size & Journey Type
+                                    Who is travelling? Tap to adjust
                                   </span>
                                   <div className="grid md:grid-cols-2 gap-4">
                                     {/* Capsule Block 5: Passengers */}
@@ -989,11 +1062,31 @@ function HeroAndQuoteArea() {
                                       "bg-black/50 border rounded-2xl p-4 relative overflow-hidden transition-all duration-300 flex flex-col justify-center",
                                       activeFocus === 'passengers' ? "border-amber-500/50 shadow-[0_0_25px_rgba(245,158,11,0.15)]" : "border-slate-800 hover:border-slate-700"
                                     )}>
-                                      <label htmlFor="passenger-count-input" className="text-[10px] uppercase font-bold tracking-[0.25em] text-amber-400 mb-1 font-mono">Passenger Count</label>
-                                      <input 
+                                      <label htmlFor="passenger-count-input" className="text-[10px] uppercase font-bold tracking-[0.25em] text-amber-400 mb-1 font-mono">How Many Seats?</label>
+                                      <div className="flex flex-wrap gap-1.5 mb-2">
+                                        {['8', '16', '24', '33', '49', '70'].map((p) => (
+                                          <button
+                                            key={p}
+                                            type="button"
+                                            onClick={() => {
+                                              setFormData(prev => ({ ...prev, passengers: p }));
+                                              setErrors(prev => { const copy = { ...prev }; delete copy.passengers; return copy; });
+                                            }}
+                                            className={cn(
+                                              "px-3 py-1.5 rounded-lg text-[11px] font-bold border transition-all duration-200 cursor-pointer",
+                                              formData.passengers === p
+                                                ? "bg-amber-500 text-slate-950 border-amber-400"
+                                                : "bg-transparent text-slate-400 border-slate-700 hover:border-amber-500/50 hover:text-white"
+                                            )}
+                                          >
+                                            {p}
+                                          </button>
+                                        ))}
+                                      </div>
+                                      <input
                                         id="passenger-count-input"
-                                        type="number" 
-                                        placeholder="Number of Passengers" 
+                                        type="number"
+                                        placeholder="Or type an exact number"
                                         value={formData.passengers}
                                         onFocus={() => setActiveFocus('passengers')}
                                         onBlur={() => setActiveFocus(null)}
@@ -1026,7 +1119,7 @@ function HeroAndQuoteArea() {
                                       "bg-black/50 border rounded-2xl p-4 relative overflow-hidden transition-all duration-300 flex flex-col justify-center relative",
                                       activeFocus === 'journeyType' ? "border-amber-500/50 shadow-[0_0_25px_rgba(245,158,11,0.15)]" : "border-slate-800 hover:border-slate-700"
                                     )}>
-                                      <label htmlFor="journey-type-selector" className="text-[10px] uppercase font-bold tracking-[0.25em] text-amber-400 mb-1 font-mono">Journey Profile</label>
+                                      <label htmlFor="journey-type-selector" className="text-[10px] uppercase font-bold tracking-[0.25em] text-amber-400 mb-1 font-mono">Type of Trip</label>
                                       <select 
                                         id="journey-type-selector"
                                         value={formData.journeyType}
@@ -1094,7 +1187,7 @@ function HeroAndQuoteArea() {
                                     onClick={handleNext}
                                     className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 bg-[size:200%_auto] text-slate-950 font-bold tracking-[0.2em] text-xs uppercase py-4 px-10 rounded-2xl shadow-[0_20px_40px_rgba(245,158,11,0.25)] transition-all duration-500 hover:bg-right hover:scale-[1.02] hover:shadow-[0_25px_50px_rgba(245,158,11,0.45)] active:scale-[0.98] flex items-center justify-center space-x-3 cursor-pointer btn-premium-sheen"
                                   >
-                                    <span>Next: Contact</span>
+                                    <span>Last step</span>
                                     <ArrowRight className="w-4 h-4 shrink-0" />
                                   </button>
                                 </motion.div>
@@ -1117,7 +1210,7 @@ function HeroAndQuoteArea() {
                                   className="space-y-4"
                                 >
                                   <span className="block text-[10px] tracking-[0.2em] font-bold text-amber-400 uppercase font-mono">
-                                    Your Contact Details
+                                    Last bit: where do we send your price?
                                   </span>
                                   <div className="space-y-4">
                                     {/* Capsule Block 7: Full Name */}
@@ -1278,7 +1371,7 @@ function HeroAndQuoteArea() {
                                     disabled={isSending}
                                     className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 bg-[size:200%_auto] text-slate-950 font-bold tracking-[0.2em] text-xs uppercase py-4 px-10 rounded-2xl shadow-[0_20px_40px_rgba(245,158,11,0.25)] transition-all duration-500 hover:bg-right hover:scale-[1.02] hover:shadow-[0_25px_50px_rgba(245,158,11,0.45)] active:scale-[0.98] flex items-center justify-center space-x-3 cursor-pointer btn-premium-sheen disabled:opacity-60 disabled:cursor-wait"
                                   >
-                                    <span>{isSending ? 'Sending…' : 'Send My Quote Request'}</span>
+                                    <span>{isSending ? 'Sending…' : 'Get My Quote'}</span>
                                     <CheckCircle2 className={cn("w-4 h-4 shrink-0", isSending && "animate-spin")} />
                                   </button>
                                 </motion.div>
@@ -4829,6 +4922,23 @@ export default function App() {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
+  useEffect(() => {
+    // Event carousel cards anywhere on the site: navigate home, scroll to the
+    // Smart Quote form and prefill it with the event's destination and date.
+    const onBookEvent = (e: Event) => {
+      const det = (e as CustomEvent).detail || {};
+      setCurrentPage('home');
+      setTimeout(() => {
+        const el = document.getElementById('smart-quote');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        window.dispatchEvent(new CustomEvent('booking-preselect-passengers', { detail: det }));
+      }, 150);
+    };
+    window.addEventListener('ugo-book-event', onBookEvent);
+    return () => window.removeEventListener('ugo-book-event', onBookEvent);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="min-h-screen bg-alabaster font-sans text-royal-navy">
       <SiteHeader onNavigate={(page) => setCurrentPage(page)} />
@@ -5158,7 +5268,10 @@ export default function App() {
       </main>
 
       <ConciergeChat />
-      
+
+      {/* Low-friction quote card on every content page (home has the full form) */}
+      <QuickQuoteStrip page={currentPage} />
+
       <PremiumFooterSection onNavigate={(page) => setCurrentPage(page)} />
     </div>
   );

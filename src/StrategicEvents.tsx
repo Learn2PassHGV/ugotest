@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Zap, 
+import { UpcomingEvents } from './components/UpcomingEvents';
+import {
+  Zap,
   MapPin, 
   TrendingUp, 
   Users, 
@@ -439,6 +440,8 @@ export function StrategicEvents({ onNavigateToHomeAndBook }: StrategicEventsProp
           </button>
         </div>
       </section>
+
+      <UpcomingEvents />
     </div>
   );
 }
