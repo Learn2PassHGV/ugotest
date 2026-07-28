@@ -128,7 +128,7 @@ export function WeddingTransport({ onNavigateToHomeAndBook }: WeddingTransportPr
           </h1>
 
           <p className="service-subtext-load font-sans text-slate-350 font-light text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
-            Flawless, unbranded transport for your guests and bridal party — planned around historic estates, manor venues and celebrations across London and the Home Counties.
+            Flawless, unbranded transport for your guests and bridal party, planned around historic estates, manor venues and celebrations across London and the Home Counties.
           </p>
 
           {/* VISUAL HARMONY PROTOCOL BLOCK */}
@@ -137,7 +137,7 @@ export function WeddingTransport({ onNavigateToHomeAndBook }: WeddingTransportPr
               MADE FOR THE PHOTOGRAPHS
             </div>
             <p className="font-serif text-sm md:text-base leading-relaxed text-slate-200 italic font-light">
-              "Your wedding photographs last forever — and our vehicles are often in them. That is why the fleet is completely unbranded and kept pristine: it looks right at the venue doors, and it looks right in the album."
+              "Your wedding photographs last forever, and our vehicles are often in them. That is why the fleet is completely unbranded and kept pristine: it looks right at the venue doors, and it looks right in the album."
             </p>
             {/* Accent gold underline rule */}
             <div className="w-24 h-0.5 bg-amber-500 mx-auto mt-5" />

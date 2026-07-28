@@ -13,7 +13,7 @@ export function PrivacyPolicy() {
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
           <h1 className="font-serif text-4xl md:text-5xl text-slate-900 leading-tight mb-4">Privacy Policy</h1>
           <p className="font-sans text-slate-600 font-light text-base">
-            UGO Coach &amp; Minibus Hire (UGO is a trading name of Pullman Direct Ltd) — last updated July 2026.
+            UGO Coach &amp; Minibus Hire (UGO is a trading name of Pullman Direct Ltd), last updated July 2026.
           </p>
         </div>
       </section>
@@ -62,7 +62,7 @@ export function PrivacyPolicy() {
               We never sell your data, and we do not share it with brokers or marketing companies. Limited data
               is processed on our behalf by service providers who help us run the website and the business: our
               email delivery provider (to deliver enquiry emails to us), Google (to power the chat assistant),
-              our website hosting provider, and — where you make a payment — banks and payment processors.
+              our website hosting provider, and, where you make a payment, banks and payment processors.
               Each provider is bound to process data only on our instructions.
             </p>
           </div>

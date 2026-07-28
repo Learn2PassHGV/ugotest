@@ -201,7 +201,7 @@ function HeroAndQuoteArea() {
       setIsSubmitted(true);
     } else {
       setSubmitError(
-        "We couldn't send your request just now — please try again in a moment, or call us directly on 0845 8333 456 and we'll quote you over the phone."
+        "We couldn't send your request just now, please try again in a moment, or call us directly on 0845 8333 456 and we'll quote you over the phone."
       );
     }
   };
@@ -580,7 +580,7 @@ function HeroAndQuoteArea() {
           <div className={cn("flex flex-col transition-all duration-500 w-full", isExpanded ? "gap-1 items-center" : "gap-4 -mt-2")}>
             {/* Single canonical H1 for search engines & screen readers; the rotating
                 display copies below are decorative (aria-hidden). */}
-            <h1 className="sr-only">Premium Coach &amp; Minibus Hire Nationwide — UGO, St Albans &amp; London</h1>
+            <h1 className="sr-only">Premium Coach &amp; Minibus Hire Nationwide, UGO, St Albans &amp; London</h1>
             <div className="hero-titles-grid-stack">
               {HERO_COPIES.map((copy, index) => {
                 const isActive = index === copyIndex;
@@ -683,16 +683,13 @@ function HeroAndQuoteArea() {
                       {/* Header Cluster */}
                       <div className="text-center mb-6 sm:mb-10">
                         <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-amber-400 mb-3 block">
-                          FAST, FREE QUOTES
+                          UNDER A MINUTE · SAME DAY REPLY
                         </span>
                         <h2 className="font-serif text-3xl md:text-5xl text-white leading-tight font-medium text-glow-title">
-                          Request a Smart Quote
+                          Wedding? Airport? Big day out?
                         </h2>
                         <p className="text-amber-400 mt-2 text-xs md:text-sm font-sans tracking-wide font-medium">
-                          Takes under 60 seconds. A personal price for your exact journey, usually the same day.
-                        </p>
-                        <p className="text-slate-300 mt-3 max-w-lg mx-auto text-sm font-light leading-relaxed">
-                          Tell us roughly where, when and how many. A rough idea is plenty; the fine details are tidied up when we confirm.
+                          We go where you go. Tell us, we price it.
                         </p>
                       </div>
 
@@ -1015,7 +1012,6 @@ function HeroAndQuoteArea() {
                                           </button>
                                         ))}
                                       </div>
-                                      <p className="text-[9px] text-slate-500 mt-2 font-sans">Optional. Exact times are settled when we confirm your quote.</p>
                                     </div>
                                   </div>
                                 </motion.div>
@@ -1055,7 +1051,7 @@ function HeroAndQuoteArea() {
                                             ))}
                                           </div>
                                         </div>
-                                        <p className="text-[9px] text-slate-500 font-sans">Coming back the same night? Just pick the same date.</p>
+                                        <p className="text-[9px] text-slate-500 font-sans">Same-night return? Same date.</p>
                                       </div>
                                     )}
                                   </div>
@@ -1083,7 +1079,7 @@ function HeroAndQuoteArea() {
                                     <ArrowRight className="w-4 h-4 shrink-0" />
                                   </button>
                                   <p className="text-[10px] text-slate-400 font-sans tracking-wide">
-                                    Your details are strictly secure and never sold to third-party brokers.
+                                    Never sold on. Never spammed.
                                   </p>
                                 </motion.div>
                               </motion.div>
@@ -1216,7 +1212,7 @@ function HeroAndQuoteArea() {
                                   className="border border-white/5 bg-white/5 rounded-2xl p-5"
                                 >
                                   <p className="text-xs text-slate-400 font-sans italic leading-relaxed">
-                                    * Operational Note: All vehicles and logistics are run un-signwritten and completely de-branded to maintain the highest levels of corporate and private guest client discretion.
+                                    Unbranded vehicles. Total discretion, always.
                                   </p>
                                 </motion.div>
 
@@ -1261,7 +1257,7 @@ function HeroAndQuoteArea() {
                                   className="space-y-4"
                                 >
                                   <span className="block text-[10px] tracking-[0.2em] font-bold text-amber-400 uppercase font-mono">
-                                    Last bit: where do we send your price?
+                                    Where do we send your price?
                                   </span>
                                   <div className="space-y-4">
                                     {/* Capsule Block 7: Full Name */}
@@ -1400,7 +1396,7 @@ function HeroAndQuoteArea() {
                                   className="border-l-4 border-amber-500 bg-amber-500/5 p-4 rounded-r-xl"
                                 >
                                   <p className="text-xs text-slate-300 font-sans leading-relaxed">
-                                    <strong>Straight to the owners</strong>: your request is emailed directly to Alan and Sasha's own team — no call centres, no brokers, no middlemen.
+                                    <strong>Straight to Alan and Sasha.</strong> No call centres, no brokers.
                                   </p>
                                 </motion.div>
 
@@ -1511,7 +1507,7 @@ function HeroAndQuoteArea() {
 }
 
 /**
- * Client roster ticker — names confirmed as genuine past/present accounts of
+ * Client roster ticker, names confirmed as genuine past/present accounts of
  * the business by the owners. Tooltip text describes the work delivered.
  */
 const ELITE_TRACK_1 = [
@@ -1532,7 +1528,7 @@ const ELITE_TRACK_2 = [
 ];
 
 /**
- * Written references received by the business (verbatim, lightly trimmed) —
+ * Written references received by the business (verbatim, lightly trimmed), 
  * from the long-standing Testimonials page. Shown as spotlight cards beneath
  * the client ticker.
  */
@@ -1540,17 +1536,17 @@ const TESTIMONIAL_SPOTLIGHTS = [
   {
     quote: "The only company we have ever used that ensures our staff are on time every day. There is nothing they will not do to help.",
     name: "Dan Mankelow, CEO",
-    context: "First Call Contract Services — staff transport for 10+ years",
+    context: "First Call Contract Services, staff transport for 10+ years",
   },
   {
-    quote: "UGO is the only company I work with — my reputation is my business, and these guys work to the same ethics as myself.",
+    quote: "UGO is the only company I work with, my reputation is my business, and these guys work to the same ethics as myself.",
     name: "Darren Nash",
-    context: "Falcon Coaches — North London operator",
+    context: "Falcon Coaches, North London operator",
   },
   {
     quote: "They have allowed us to take our puppies on their buses for 12 years and not once been late or let us down.",
     name: "Wood Green Animal Shelter",
-    context: "Guide dog training school — 12-year client",
+    context: "Guide dog training school, 12-year client",
   },
 ];
 
@@ -1692,7 +1688,7 @@ function ElitePedigree() {
           TRUSTED BY LEADING BUSINESSES, LOCAL COUNCILS, SCHOOLS AND FAMILIES FOR OVER 15 YEARS
         </p>
         <p className="mt-3 text-[11px] text-slate-500 font-sans tracking-wide">
-          A selection of accounts our family team has proudly served — hover any name to see the work.
+          A selection of accounts our family team has proudly served, hover any name to see the work.
         </p>
       </div>
 
@@ -1742,7 +1738,7 @@ function ElitePedigree() {
         </div>
       </div>
 
-      {/* Written references — spotlight cards (real quotes from the business's reference file) */}
+      {/* Written references, spotlight cards (real quotes from the business's reference file) */}
       <div className="max-w-6xl mx-auto px-6 mt-16 md:mt-20 grid md:grid-cols-3 gap-6">
         {TESTIMONIAL_SPOTLIGHTS.map((t) => (
           <figure key={t.name} className="bg-white border border-slate-200/80 rounded-2xl p-7 shadow-sm flex flex-col justify-between">
@@ -1807,7 +1803,7 @@ function LiveAIConciergeHub() {
     if (result.ok) {
       setLeadDelivered(true);
     } else {
-      setMessages(prev => [...prev, { role: 'bot', text: "I couldn't reach our booking system just now — to make sure you're looked after, please call the family team directly on 0845 8333 456 (out of hours: 07833 226 623)." }]);
+      setMessages(prev => [...prev, { role: 'bot', text: "I couldn't reach our booking system just now, to make sure you're looked after, please call the family team directly on 0845 8333 456 (out of hours: 07833 226 623)." }]);
     }
   };
 
@@ -1880,7 +1876,7 @@ function LiveAIConciergeHub() {
             <li className="relative">
               <span className="absolute -left-[29px] top-1.5 w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.3)]" />
               <h4 className="font-sans text-slate-900 font-bold uppercase tracking-[0.1em] text-xs mb-1">Live Itinerary Mapping</h4>
-              <p className="font-sans text-slate-650 font-light text-sm">Tell the assistant your route, dates and group size and it will shape the journey with you — then our family team prices it personally.</p>
+              <p className="font-sans text-slate-650 font-light text-sm">Tell the assistant your route, dates and group size and it will shape the journey with you, then our family team prices it personally.</p>
             </li>
             <li className="relative">
               <span className="absolute -left-[29px] top-1.5 w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.3)]" />
@@ -1917,7 +1913,7 @@ function LiveAIConciergeHub() {
                   <span className="block text-amber-700 font-medium mb-1">
                     Office: <a href="tel:08458333456" className="hover:underline">0845 8333 456</a> · Out-of-hours: <a href="tel:07833226623" className="hover:underline">07833 226 623</a>
                   </span>
-                  Call any time — evenings, weekends and bank holidays included — for direct, human coordination of your journey.
+                  Call any time, evenings, weekends and bank holidays included, for direct, human coordination of your journey.
                 </div>
               </div>
             </div>
@@ -1925,7 +1921,7 @@ function LiveAIConciergeHub() {
             {leadDelivered && (
               <div className="mb-3 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-2.5 flex items-center gap-2 z-20 relative">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
-                <span className="font-sans text-xs text-emerald-800">Your details have been emailed to Alan &amp; Sasha's team — they'll be in touch with your quote.</span>
+                <span className="font-sans text-xs text-emerald-800">Your details have been emailed to Alan &amp; Sasha's team, they'll be in touch with your quote.</span>
               </div>
             )}
 
@@ -4158,7 +4154,7 @@ function LogisticsArchitectureSection({ onNavigate }: { onNavigate?: (page: Page
             Our Executive Transport Services
           </h2>
           <p className="font-sans text-slate-400 font-light text-sm md:text-base leading-relaxed">
-            Choose the kind of journey you're planning and we'll show you exactly how we handle it — and put you straight through to the right person.
+            Choose the kind of journey you're planning and we'll show you exactly how we handle it, and put you straight through to the right person.
           </p>
         </div>
 
@@ -4488,7 +4484,7 @@ const getPageFromPath = (path: string): PageType => {
   // Normalise: strip trailing slashes and lowercase
   let p = (path || '/').replace(/\/+$/, '').toLowerCase() || '/';
 
-  // Legacy/alias paths — every href that has ever been linked keeps working.
+  // Legacy/alias paths, every href that has ever been linked keeps working.
   const ALIASES: Record<string, string> = {
     '/our-services': '/our-services',
     '/commercial': '/our-services',
@@ -4651,13 +4647,13 @@ const getMetaForPage = (page: PageType): { title: string; description: string } 
     return { title: 'Privacy Policy | UGO Coach & Minibus Hire', description: 'How UGO Coach & Minibus Hire (Pullman Direct Ltd) collects, uses and protects your personal data.' };
   }
   if (page === 'terms') {
-    return { title: 'Terms & Conditions of Hire | UGO Coach & Minibus Hire', description: 'The conditions of hire for Pullman Direct Ltd, trading as UGO Coach & Minibus Hire — deposits, cancellations, passenger safety and more.' };
+    return { title: 'Terms & Conditions of Hire | UGO Coach & Minibus Hire', description: 'The conditions of hire for Pullman Direct Ltd, trading as UGO Coach & Minibus Hire, deposits, cancellations, passenger safety and more.' };
   }
   if (page === 'contact') {
     return { title: 'Contact Us | UGO Coach & Minibus Hire, St Albans', description: 'Speak directly with our family management team. Call 0845 8333 456, email sasha@coaches.business, or send your journey details for a fast personal quote.' };
   }
   if (page === 'locations-index') {
-    return { title: 'Areas We Cover | Coach & Minibus Hire Across Herts, London & Home Counties | UGO', description: 'Every area our family-run coach and minibus fleet serves — St Albans, Watford, Luton, Hemel Hempstead, North London and 20+ towns across the Home Counties.' };
+    return { title: 'Areas We Cover | Coach & Minibus Hire Across Herts, London & Home Counties | UGO', description: 'Every area our family-run coach and minibus fleet serves, St Albans, Watford, Luton, Hemel Hempstead, North London and 20+ towns across the Home Counties.' };
   }
   if (page === 'not-found') {
     return { title: 'Page Not Found | UGO Coach & Minibus Hire', description: 'That page could not be found. Explore our coach and minibus hire services or call 0845 8333 456.' };
@@ -4760,7 +4756,7 @@ export default function App() {
   // Reveal safety net: the scroll-reveal system hides content until an
   // IntersectionObserver fires. If the observer misses (keyboard jumps, fast
   // scrolling, anchor links, observers registered before elements mount),
-  // sections stayed invisible — including the footer. This sweep force-reveals
+  // sections stayed invisible, including the footer. This sweep force-reveals
   // anything in or near the viewport, and periodically anything left behind.
   useEffect(() => {
     const reveal = () => {

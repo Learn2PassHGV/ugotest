@@ -173,7 +173,7 @@ export function CommercialLogisticsPage({ onRequestQuote }: { onRequestQuote?: (
           <div className="reveal-layer-hidden reveal-sec-btn w-full max-w-xl mx-auto">
             {tenderState === 'sent' ? (
               <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-sm px-6 py-5 text-emerald-300 font-sans text-sm">
-                Thank you — your details are with our management team, who will contact you to discuss your tender.
+                Thank you, your details are with our management team, who will contact you to discuss your tender.
               </div>
             ) : (
               <>
@@ -197,7 +197,7 @@ export function CommercialLogisticsPage({ onRequestQuote }: { onRequestQuote?: (
                 </div>
                 {tenderState === 'error' && (
                   <p className="mt-3 text-xs text-red-300 font-sans">
-                    We couldn't send that just now — please call us directly on <a href="tel:08458333456" className="underline font-semibold">0845 8333 456</a>.
+                    We couldn't send that just now, please call us directly on <a href="tel:08458333456" className="underline font-semibold">0845 8333 456</a>.
                   </p>
                 )}
                 <p className="mt-3 text-[11px] text-slate-500 font-sans">

@@ -123,7 +123,7 @@ export function TownLandingPage({ town, onNavigate, onRequestQuote }: TownLandin
               {town.localAngle}
             </p>
             <p className="font-sans text-slate-700 font-light leading-relaxed text-base lg:text-lg">
-              Every journey is backed by our family management team in St Albans — direct phone access,
+              Every journey is backed by our family management team in St Albans, direct phone access,
               professionally vetted drivers, and an unbranded executive fleet from 16-seat minibuses to
               53-seat coaches.
             </p>
@@ -156,7 +156,7 @@ export function TownLandingPage({ town, onNavigate, onRequestQuote }: TownLandin
       <section className="py-20 bg-white border-t border-stone-200">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
           <h2 className="font-serif text-3xl md:text-4xl text-slate-900 leading-tight mb-10 text-center">
-            {town.name} coach hire — common questions
+            {town.name} coach hire, common questions
           </h2>
           <div className="space-y-6">
             {town.faqs.map((f) => (

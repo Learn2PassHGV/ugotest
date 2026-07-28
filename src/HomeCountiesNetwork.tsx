@@ -440,7 +440,7 @@ export function HomeCountiesNetwork({ onNavigateToHomeAndBook }: HomeCountiesNet
             Plan Group Travel Across the Home Counties
           </h2>
           <p className="font-sans text-slate-350 text-xs md:text-base leading-relaxed max-w-2xl mx-auto mb-10 font-light reveal-layer-hidden reveal-desc-node">
-            Staff shuttles, wedding transport and private group travel across Hertfordshire, Bedfordshire and Buckinghamshire — planned by a family team who drive these roads every day.
+            Staff shuttles, wedding transport and private group travel across Hertfordshire, Bedfordshire and Buckinghamshire, planned by a family team who drive these roads every day.
           </p>
 
           <button

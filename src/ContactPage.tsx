@@ -2,7 +2,7 @@ import React from 'react';
 import { Phone, Mail, MapPin, Clock, ArrowRight } from 'lucide-react';
 
 /**
- * Contact page — the site's canonical NAP (name/address/phone) page for
+ * Contact page, the site's canonical NAP (name/address/phone) page for
  * local SEO and the natural link target for the Google Business Profile.
  */
 export function ContactPage({ onRequestQuote }: { onRequestQuote?: () => void }) {
@@ -42,7 +42,7 @@ export function ContactPage({ onRequestQuote }: { onRequestQuote?: () => void })
             Contact UGO Coach &amp; Minibus Hire
           </h1>
           <p className="font-sans text-slate-600 font-light text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-            Call, email or send your journey details — you will always be dealing directly with our
+            Call, email or send your journey details, you will always be dealing directly with our
             family management team, never a call centre.
           </p>
         </div>
@@ -98,7 +98,7 @@ export function ContactPage({ onRequestQuote }: { onRequestQuote?: () => void })
                 <h2 className="font-serif text-lg text-slate-900 mb-1">Hours</h2>
                 <p className="font-sans text-sm text-slate-700 leading-relaxed">
                   Office 08:00–18:00, seven days a week.<br />
-                  Out of hours, weekends and bank holidays: call the mobile line — a member of the family
+                  Out of hours, weekends and bank holidays: call the mobile line, a member of the family
                   answers, not a machine.
                 </p>
               </div>
@@ -112,7 +112,7 @@ export function ContactPage({ onRequestQuote }: { onRequestQuote?: () => void })
               </span>
               <h2 className="font-serif text-3xl leading-tight mb-4">Send your journey details</h2>
               <p className="font-sans text-slate-300 font-light text-sm leading-relaxed mb-8">
-                Use our Smart Quote form — it takes under a minute, goes straight to Alan and Sasha's own
+                Use our Smart Quote form, it takes under a minute, goes straight to Alan and Sasha's own
                 inbox, and you will get a personal quote back, usually the same day. UGO is a trading name
                 of Pullman Direct Ltd, a DVSA-registered operator with enhanced-DBS vetted drivers.
               </p>

@@ -47,7 +47,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
     {
       slug: "school-trip-transport-checklist",
       title: "School Trip Transport: The Compliance Checklist Organisers Should Use",
-      brief: "For teachers, EVCs and trip organisers: the exact paperwork to demand from any coach operator — DBS checks, licensing, insurance, driver hours — and the questions worth asking beyond the legal minimum.",
+      brief: "For teachers, EVCs and trip organisers: the exact paperwork to demand from any coach operator, DBS checks, licensing, insurance, driver hours, and the questions worth asking beyond the legal minimum.",
       bgClass: "bg-white text-[#050C1A] border-slate-200 shadow-xl",
       btnClass: "bg-[#050C1A] hover:bg-slate-900 text-white",
       btnText: "Read the checklist",
@@ -61,7 +61,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
     {
       slug: "wedding-guest-transport-planning",
       title: "Wedding Guest Transport: Shuttles, Timings and Costs",
-      brief: "How the timed shuttle loop works, the schedule that actually holds on the day, how many vehicles you really need, and what changes the price — from an operator that does this every summer weekend.",
+      brief: "How the timed shuttle loop works, the schedule that actually holds on the day, how many vehicles you really need, and what changes the price, from an operator that does this every summer weekend.",
       bgClass: "bg-[#050C1A] text-white border-[#050C1A] shadow-2xl",
       btnClass: "bg-amber-500 hover:bg-amber-600 text-slate-950",
       btnText: "Read the wedding guide",
@@ -103,7 +103,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
           </h1>
 
           <p className="font-sans text-slate-600 font-light text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
-            Straight answers on pricing, school transport compliance and event planning — written by the family team who run the vehicles, not a content agency.
+            Straight answers on pricing, school transport compliance and event planning, written by the family team who run the vehicles, not a content agency.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -135,7 +135,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
             WHY WE WRITE THESE
           </div>
           <p className="font-serif text-sm md:text-base leading-relaxed text-slate-200 italic font-light max-w-3xl mx-auto text-center">
-            "The same questions come up on the phone every week — what will it cost, what paperwork should a school see, how do wedding shuttles actually run. These guides are those answers, written down properly."
+            "The same questions come up on the phone every week, what will it cost, what paperwork should a school see, how do wedding shuttles actually run. These guides are those answers, written down properly."
           </p>
           <div className="w-24 h-0.5 bg-amber-500 mt-5 mx-auto" />
         </div>
@@ -155,7 +155,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
           </p>
 
           <p>
-            Everything here comes from real jobs run by our family team out of St Albans — corporate shuttles, film unit moves, school routes and wedding transport across Hertfordshire and London. If a question isn't covered, call us on 0845 8333 456 and we'll give you a straight answer.
+            Everything here comes from real jobs run by our family team out of St Albans, corporate shuttles, film unit moves, school routes and wedding transport across Hertfordshire and London. If a question isn't covered, call us on 0845 8333 456 and we'll give you a straight answer.
           </p>
         </div>
       </section>
@@ -235,10 +235,10 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
               WHAT WE COVER
             </span>
             <h2 className="font-serif text-3xl md:text-4.5xl leading-tight text-[#050C1A]">
-              What We Write About — and Who It's For
+              What We Write About, and Who It's For
             </h2>
             <p className="font-sans text-xs md:text-sm text-slate-500 font-light max-w-2xl mx-auto leading-relaxed mt-4">
-              The topics these guides cover and the people they're written for. More are on the way — tell us what would help and we'll write it.
+              The topics these guides cover and the people they're written for. More are on the way, tell us what would help and we'll write it.
             </p>
           </div>
 
@@ -355,7 +355,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
                   className="font-sans text-xs md:text-sm text-slate-600 leading-relaxed font-light"
                   itemProp="text"
                 >
-                  We review them whenever something material changes — pricing seasons, ULEZ boundaries, DVSA guidance for school transport — and update the guide rather than leaving old advice up. If you spot anything that looks out of date, call us and we'll put it right.
+                  We review them whenever something material changes, pricing seasons, ULEZ boundaries, DVSA guidance for school transport, and update the guide rather than leaving old advice up. If you spot anything that looks out of date, call us and we'll put it right.
                 </div>
               </div>
             </div>
@@ -397,7 +397,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
                   className="font-sans text-xs md:text-sm text-slate-600 leading-relaxed font-light"
                   itemProp="text"
                 >
-                  Yes — share them freely. Teachers use the compliance checklist in trip-planning paperwork and companies use the pricing guide for travel budgets. If you need anything confirmed in writing for a tender or risk assessment, email sasha@coaches.business and we'll help.
+                  Yes, share them freely. Teachers use the compliance checklist in trip-planning paperwork and companies use the pricing guide for travel budgets. If you need anything confirmed in writing for a tender or risk assessment, email sasha@coaches.business and we'll help.
                 </div>
               </div>
             </div>
@@ -418,7 +418,7 @@ export function TransportLogisticsBlog({ onNavigateToHomeAndBook, onOpenPost }: 
             Read Enough? Let's Price Your Journey.
           </h2>
           <p className="font-sans text-slate-300 text-xs md:text-base leading-relaxed max-w-2xl mx-auto mb-10 font-light">
-            Send your date, pickup and group size through the Smart Quote form and the family team will come back with a clear price — usually the same day. Or call the owners direct on{' '}
+            Send your date, pickup and group size through the Smart Quote form and the family team will come back with a clear price, usually the same day. Or call the owners direct on{' '}
             <a href="tel:07833226623" className="text-amber-400 font-semibold hover:text-amber-300 transition-colors">07833 226 623</a>.
           </p>
 

@@ -99,7 +99,7 @@ export function CorporateResponsibility({ onNavigateToHomeAndBook }: CorporateRe
           </h1>
 
           <p className="font-sans text-slate-350 font-light text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
-            Measurable carbon reporting, Euro 6 clean-air compliance and responsible governance — the evidence your ESG and procurement teams ask for, ready to hand.
+            Measurable carbon reporting, Euro 6 clean-air compliance and responsible governance, the evidence your ESG and procurement teams ask for, ready to hand.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -421,7 +421,7 @@ export function CorporateResponsibility({ onNavigateToHomeAndBook }: CorporateRe
             Travel Greener Without Compromising Comfort
           </h2>
           <p className="font-sans text-slate-300 text-xs md:text-base leading-relaxed max-w-2xl mx-auto mb-10 font-light">
-            One modern Euro 6 coach takes dozens of cars off the road. Tell us your journey and we'll plan it cleanly, efficiently and comfortably — with a clear price, not a calculator.
+            One modern Euro 6 coach takes dozens of cars off the road. Tell us your journey and we'll plan it cleanly, efficiently and comfortably, with a clear price, not a calculator.
           </p>
 
           <button

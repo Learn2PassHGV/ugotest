@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * Conditions of hire — ported from the business's established Terms and
+ * Conditions of hire, ported from the business's established Terms and
  * Conditions of Booking (previously published on the old site), with
  * spelling and formatting cleaned up. Substance unchanged.
  */

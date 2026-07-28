@@ -444,7 +444,7 @@ export function PrivateCoachHire({ onNavigateToHomeAndBook }: PrivateCoachHirePr
             Your Group, Your Day, Our Wheels
           </h2>
           <p className="reveal-layer-hidden reveal-sec-desc font-sans text-slate-350 text-xs md:text-base leading-relaxed max-w-2xl mx-auto mb-10 font-light">
-            Weddings, day trips, tours and celebrations — planned personally by the family team and driven in pristine unbranded vehicles. Send us the details and we'll price it properly.
+            Weddings, day trips, tours and celebrations, planned personally by the family team and driven in pristine unbranded vehicles. Send us the details and we'll price it properly.
           </p>
 
           <button

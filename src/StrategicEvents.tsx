@@ -366,7 +366,7 @@ export function StrategicEvents({ onNavigateToHomeAndBook }: StrategicEventsProp
                   className="font-sans text-xs md:text-sm text-slate-300 leading-relaxed font-light"
                   itemProp="text"
                 >
-                  Backed by our central dispatch base and our comprehensive network, we can rapidly deploy multiple vehicle sizes—from executive minibuses to high-capacity coaches—ensuring reliable, short-notice scalability.
+                  Backed by our central dispatch base and our comprehensive network, we can rapidly deploy multiple vehicle sizes, from executive minibuses to high-capacity coaches, ensuring reliable, short-notice scalability.
                 </div>
               </div>
             </div>

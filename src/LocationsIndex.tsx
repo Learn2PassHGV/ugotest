@@ -14,13 +14,13 @@ const REGIONS = [
 ];
 
 const BASES = [
-  { label: 'St Albans — Operations Base', page: 'st-albans', path: '/locations/st-albans' },
+  { label: 'St Albans, Operations Base', page: 'st-albans', path: '/locations/st-albans' },
   { label: 'Watford & Elstree Hub', page: 'watford', path: '/locations/watford' },
   { label: 'Hemel Hempstead Core', page: 'hemel', path: '/locations/hemel-hempstead' },
   { label: 'Luton & Regional Access', page: 'luton', path: '/locations/luton' },
 ];
 
-/** Index of every area page — regions, operational bases, and town pages. */
+/** Index of every area page, regions, operational bases, and town pages. */
 export function LocationsIndex({ onNavigate }: LocationsIndexProps) {
   return (
     <div className="bg-stone-50 min-h-screen font-sans">
@@ -31,7 +31,7 @@ export function LocationsIndex({ onNavigate }: LocationsIndexProps) {
           </h1>
           <p className="font-sans text-slate-600 font-light text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
             Based in St Albans, our family-run fleet serves Hertfordshire, London and the Home Counties
-            daily — and travels nationwide for tours, events and productions.
+            daily, and travels nationwide for tours, events and productions.
           </p>
         </div>
       </section>
@@ -69,7 +69,7 @@ export function LocationsIndex({ onNavigate }: LocationsIndexProps) {
 
         <h2 className="font-serif text-2xl text-slate-900 mb-2">Towns we serve</h2>
         <p className="font-sans text-sm text-slate-600 font-light mb-6 max-w-2xl">
-          Dedicated local pages for the towns our vehicles cover every week — each with local journey
+          Dedicated local pages for the towns our vehicles cover every week, each with local journey
           ideas, honest answers and a direct line to the family team.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
