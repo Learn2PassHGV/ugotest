@@ -175,10 +175,10 @@ export function QuickQuoteStrip({ page }: { page: string }) {
                 QUICK QUOTE · NO FORMS TO FIGHT
               </span>
               <h2 className="font-serif text-2xl md:text-3xl text-white leading-snug mb-4">
-                A price for your journey, in under a minute.
+                Wedding? Event? Airport run?
               </h2>
               <p className="font-sans text-slate-400 text-sm leading-relaxed font-light mb-6">
-                Where, roughly when, and a number to reach you on. It goes straight to Alan and Sasha, and replies usually come the same day. A rough idea is plenty.
+                We go where you go. A rough idea and a number is all we need. Same day replies.
               </p>
               <div className="flex flex-col gap-2.5">
                 <a href="tel:08458333456" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-sans text-xs font-bold tracking-wider transition-colors">

@@ -87,7 +87,7 @@ export function VehicleFinder() {
           </span>
           <h2 className="font-serif text-3xl md:text-5xl text-slate-950 leading-tight">Which vehicle fits your group?</h2>
           <p className="font-sans text-slate-500 text-sm md:text-base mt-3 max-w-xl mx-auto font-light">
-            Tell us how many and what for. We will show you what we would send, and what the maths per person looks like.
+            How many, and what for. We show you the vehicle.
           </p>
         </div>
 
@@ -143,9 +143,7 @@ export function VehicleFinder() {
                   Why one vehicle wins
                 </span>
                 <p className="font-sans text-xs text-slate-600 leading-relaxed">
-                  One price for the whole group, split however you like. Everyone travels together, door to door, and
-                  nobody is left sorting trains, taxis and parking on their own. Your price comes from Alan and Sasha
-                  personally, usually the same day.
+                  One vehicle. One price. Everyone together, door to door. Priced personally by Alan and Sasha, usually the same day.
                 </p>
               </div>
             </div>

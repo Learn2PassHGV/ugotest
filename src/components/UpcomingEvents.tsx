@@ -79,7 +79,7 @@ export function UpcomingEvents() {
             </span>
             <h2 className="font-serif text-3xl md:text-5xl text-white leading-tight">Big days coming up</h2>
             <p className="font-sans text-slate-400 text-sm md:text-base mt-3 max-w-xl font-light">
-              Real events, real dates. Tap one and the quote form fills itself in with the venue and the day.
+              Real events, real dates. Tap one, the form fills itself.
             </p>
           </div>
           <div className="hidden md:flex items-center gap-2 shrink-0">

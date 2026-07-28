@@ -59,7 +59,7 @@ export function ConciergeChat() {
         {
           id: `fallback-${Date.now()}`,
           role: 'model',
-          text: `I could not reach our booking system just now — to make sure you are looked after, please call the team directly on ${OFFICE_PHONE_DISPLAY}.`,
+          text: `I could not reach our booking system just now, to make sure you are looked after, please call the team directly on ${OFFICE_PHONE_DISPLAY}.`,
         },
       ]);
     }
@@ -82,7 +82,7 @@ export function ConciergeChat() {
     );
     const modelText =
       reply?.text ||
-      `I am having a technical issue connecting right now — please call our team directly on ${OFFICE_PHONE_DISPLAY} and they will help straight away.`;
+      `I am having a technical issue connecting right now, please call our team directly on ${OFFICE_PHONE_DISPLAY} and they will help straight away.`;
 
     const withReply: ChatMessage[] = [
       ...withUser,
@@ -132,7 +132,7 @@ export function ConciergeChat() {
             <div className="bg-emerald-50 border-b border-emerald-200 px-4 py-2 flex items-center gap-2 shrink-0">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span className="text-xs text-emerald-800">
-                Your details have been sent to Alan &amp; Sasha’s team — they will be in touch.
+                Your details have been sent to Alan &amp; Sasha’s team, they will be in touch.
               </span>
             </div>
           )}
